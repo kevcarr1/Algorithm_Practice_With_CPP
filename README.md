@@ -10,14 +10,18 @@ At a high level, all you need to know is that the top-level directory should con
 
 The BUILD file is also required and will contain the actual build instructions.
 
-_To build the CPP binary, run the following command:_
+_\*All build instructions assume you are in the top-level of the project where the WORKSPACE file exists._
+
+### _To build the CPP binary, run the following command:_
+
 <pre>
-bazel build //:main
+bazel build //src:main
 </pre>
 
 This will build the binary and store it in the bazel-bin directory.
 
-_To run the compiled binary, run:_
+### _To run the compiled binary, run:_
+
 <pre>
-./bazel-bin/main
+./bazel-bin/src/main
 </pre>

@@ -1,16 +1,21 @@
 #include <iostream>
+#include "TestData/TestData.h"
 
 using namespace std;
 
 int main()
 {
-    int arr[] = {73, 20, 30, 55, 90, 1109, 393, 27, 193};
+    int length = 10;
+    int min = 1;
+    int max = 100;
+
+    vector<int> randArray1 = generateRandomIntArray(length, min, max);
 
     cout << "Welcome to Learning Algorithms with CPP!" << endl;
     cout << endl;
     cout << "To Start, implement a Bubble Sort on the following array:" << endl;
 
-    for (int i : arr)
+    for (int i : randArray1)
         cout << i << " ";
     cout << endl;
 
