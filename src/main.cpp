@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TestData/TestData.h"
+#include "SortingAlgorithms/Sorting.h"
 
 using namespace std;
 
@@ -19,7 +20,13 @@ int main()
         cout << i << " ";
     cout << endl;
 
-    // Implement Bubble Sort here
+    // Implement Bubble Sort here, passing the array as a reference
+    // Check in src/SortingAlgorithms for function prototype
+
+    cout << "Sorted Array: ";
+    for (int i : randArray1)
+        cout << i << " ";
+    cout << endl;
 
     return 0;
 }
