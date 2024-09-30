@@ -6,5 +6,6 @@
 using namespace std;
 
 void bubbleSort(vector<int> &arr);
+void insertionSort(vector<int> &arr);
 
 #endif
