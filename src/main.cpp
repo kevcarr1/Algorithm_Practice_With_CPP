@@ -39,11 +39,15 @@ int main()
     cout << endl;
 
     vector<int> randArray3 = randArray;
-    cout << "Now use Selection Sort to sort the same array:" << endl;
+    cout << "Here's an example of Selection Sort to sort the same array:" << endl;
 
     printUnsortedArray(randArray3);
     selectionSort(randArray3);
     printSortedArray(randArray3);
+
+    cout << endl;
+
+    cout << "Next, we will compare the runtime of the algorithms and make the array configurable." << endl;
 
     return 0;
 }
