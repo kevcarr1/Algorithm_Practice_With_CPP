@@ -30,11 +30,20 @@ int main()
 
     vector<int> randArray2 = randArray;
 
-    cout << "Now use Insertion Sort to sort the same array:" << endl;
+    cout << "Here's an example of Insertion Sort to sort the same array:" << endl;
 
     printUnsortedArray(randArray2);
     insertionSort(randArray2);
     printSortedArray(randArray2);
+
+    cout << endl;
+
+    vector<int> randArray3 = randArray;
+    cout << "Now use Selection Sort to sort the same array:" << endl;
+
+    printUnsortedArray(randArray3);
+    selectionSort(randArray3);
+    printSortedArray(randArray3);
 
     return 0;
 }
