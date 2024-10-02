@@ -24,6 +24,10 @@ int main()
     int min = 1;
     int max = 100;
 
+    bool bubbleSortStatus = false;
+    bool insertionSortStatus = false;
+    bool selectionSortStatus = false;
+
     vector<int> randArray = generateRandomIntArray(length, min, max);
     auto start = high_resolution_clock::now();
     auto stop = high_resolution_clock::now();
@@ -39,6 +43,8 @@ int main()
     printSortedArray(randArray1);
     auto bubbleTime = duration_cast<microseconds>(stop - start);
     cout << "Time to complete: " << bubbleTime.count() << " microseconds" << endl;
+    bubbleSortStatus = checkIntsAscending(randArray1);
+    checkStatus(bubbleSortStatus);
 
     cout << endl;
 
@@ -53,6 +59,8 @@ int main()
     printSortedArray(randArray2);
     auto insertionTime = duration_cast<microseconds>(stop - start);
     cout << "Time to complete: " << insertionTime.count() << " microseconds" << endl;
+    insertionSortStatus = checkIntsAscending(randArray2);
+    checkStatus(insertionSortStatus);
 
     cout << endl;
 
@@ -67,13 +75,18 @@ int main()
     printSortedArray(randArray3);
     auto selectionTime = duration_cast<microseconds>(stop - start);
     cout << "Time to complete: " << selectionTime.count() << " microseconds" << endl;
+    selectionSortStatus = checkIntsAscending(randArray3);
+    checkStatus(selectionSortStatus);
 
     cout << endl;
 
     cout << "Benchmark Summary:" << endl;
-    cout << "Bubble Sort Time: " << bubbleTime.count() << " microseconds" << endl;
-    cout << "Insertion Sort Time: " << insertionTime.count() << " microseconds" << endl;
-    cout << "Selection Sort Time: " << selectionTime.count() << " microseconds" << endl;
+    cout << "Bubble Sort Time: " << bubbleTime.count() << " microseconds ";
+    checkStatus(bubbleSortStatus);
+    cout << "Insertion Sort Time: " << insertionTime.count() << " microseconds ";
+    checkStatus(insertionSortStatus);
+    cout << "Selection Sort Time: " << selectionTime.count() << " microseconds ";
+    checkStatus(selectionSortStatus);
 
     return 0;
 }

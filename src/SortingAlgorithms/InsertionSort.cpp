@@ -8,6 +8,7 @@ using namespace std;
  *         sort in ascending order
  *
  * ## Details
+ *
  * - Key Concept:
  *      The 'key' holds the value of the current
  *      element being compared.
