@@ -25,3 +25,8 @@ This will build the binary and store it in the bazel-bin directory.
 <pre>
 ./bazel-bin/src/main
 </pre>
+
+## Practicing Algorithms
+
+There are currently a few functions being called in the **main()** function. They do not have any implementation and will pass if the functions are implemented with an ascending sort.
+These functions definitions can be found in **_src/Practice/practice.cpp_**

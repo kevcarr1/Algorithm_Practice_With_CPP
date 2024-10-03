@@ -3,6 +3,12 @@
 
 using namespace std;
 
+/*********************************************************
+ * @brief Ascending order sort using Selection Sort Algorithm
+ *
+ * ## Details
+ *
+ ********************************************************/
 void selectionSort(vector<int> &arr)
 {
     int minIdx, tmp;

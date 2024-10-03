@@ -2,6 +2,7 @@
 #include <chrono>
 #include "TestData/TestData.h"
 #include "SortingAlgorithms/Sorting.h"
+#include "Practice/practice.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -44,7 +45,9 @@ int main()
     auto bubbleTime = duration_cast<microseconds>(stop - start);
     cout << "Time to complete: " << bubbleTime.count() << " microseconds" << endl;
     bubbleSortStatus = checkIntsAscending(randArray1);
+#if 0 
     checkStatus(bubbleSortStatus);
+#endif
 
     cout << endl;
 
@@ -60,7 +63,9 @@ int main()
     auto insertionTime = duration_cast<microseconds>(stop - start);
     cout << "Time to complete: " << insertionTime.count() << " microseconds" << endl;
     insertionSortStatus = checkIntsAscending(randArray2);
+#if 0
     checkStatus(insertionSortStatus);
+#endif
 
     cout << endl;
 
@@ -76,7 +81,9 @@ int main()
     auto selectionTime = duration_cast<microseconds>(stop - start);
     cout << "Time to complete: " << selectionTime.count() << " microseconds" << endl;
     selectionSortStatus = checkIntsAscending(randArray3);
+#if 0 
     checkStatus(selectionSortStatus);
+#endif
 
     cout << endl;
 
@@ -87,6 +94,62 @@ int main()
     checkStatus(insertionSortStatus);
     cout << "Selection Sort Time: " << selectionTime.count() << " microseconds ";
     checkStatus(selectionSortStatus);
+
+    // PRACTICE
+
+    vector<int> randArrayA = randArray;
+    cout << "Practice Bubble Sort: ";
+    start = high_resolution_clock::now();
+    // BUBBLE SORT PRACTICE
+    practiceBubbleSort(randArrayA);
+    stop = high_resolution_clock::now();
+    auto bubTestTime = duration_cast<microseconds>(stop - start);
+    cout << bubTestTime.count() << " microseconds ";
+    bool prBubTest = checkIntsAscending(randArrayA);
+    if (prBubTest == false && bubTestTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(prBubTest);
+    }
+
+    vector<int> randArrayB = randArray;
+    cout << "Practice Selection Sort: ";
+    start = high_resolution_clock::now();
+    // SELECTION SORT PRACTICE
+    practiceSelectionSort(randArrayB);
+    stop = high_resolution_clock::now();
+    auto selectSortTime = duration_cast<microseconds>(stop - start);
+    cout << selectSortTime.count() << " microseconds ";
+    bool prSelTest = checkIntsAscending(randArrayB);
+    if (prSelTest == false && selectSortTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(prSelTest);
+    }
+
+    vector<int> randArrayC = randArray;
+    cout << "Practice Insertion Sort: ";
+    start = high_resolution_clock::now();
+    // INSERTION SORT
+    practiceInsertionSort(randArrayC);
+    stop = high_resolution_clock::now();
+    auto prInsTime = duration_cast<microseconds>(stop - start);
+    cout << prInsTime.count() << " microseconds ";
+    auto InsCor = checkIntsAscending(randArrayC);
+    if (InsCor == false && prInsTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(InsCor);
+    }
 
     return 0;
 }
