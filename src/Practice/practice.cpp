@@ -40,3 +40,16 @@ void practiceInsertionSort(vector<int> &arr)
 
     return;
 }
+
+/*******************************************************
+ *  @brief Practice Merge Sort in this function
+ *
+ * ## Details
+ *
+ * Must implement in ascending order to pass
+ ******************************************************/
+void practiceMergeSort(vector<int> &arr)
+{
+
+    return;
+}

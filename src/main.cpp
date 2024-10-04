@@ -166,6 +166,24 @@ int main()
         checkStatus(InsCor);
     }
 
+        vector<int> randArrayD = randArray;
+    cout << "Practice Merge Sort: ";
+    start = high_resolution_clock::now();
+    // MERGE SORT
+    practiceMergeSort(randArrayD);
+    stop = high_resolution_clock::now();
+    auto prMergeTime = duration_cast<microseconds>(stop - start);
+    cout << prMergeTime.count() << " microseconds ";
+    auto prMergeStatus = checkIntsAscending(randArrayD);
+    if (prMergeStatus == false && prMergeTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(prMergeStatus);
+    }
+
     return 0;
 }
 

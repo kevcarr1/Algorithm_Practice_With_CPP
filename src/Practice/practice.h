@@ -8,5 +8,6 @@ using namespace std;
 void practiceBubbleSort(vector<int> &arr);
 void practiceSelectionSort(vector<int> &arr);
 void practiceInsertionSort(vector<int> &arr);
+void practiceMergeSort(vector<int> &arr);
 
 #endif
