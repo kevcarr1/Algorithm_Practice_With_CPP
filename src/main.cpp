@@ -28,6 +28,7 @@ int main()
     bool bubbleSortStatus = false;
     bool insertionSortStatus = false;
     bool selectionSortStatus = false;
+    bool mergeSortStatus = false;
 
     vector<int> randArray = generateRandomIntArray(length, min, max);
     auto start = high_resolution_clock::now();
@@ -85,6 +86,18 @@ int main()
     checkStatus(selectionSortStatus);
 #endif
 
+    // MERGE SORT
+    vector<int> randArray4 = randArray;
+    cout << "Merge Sort:" << endl;
+    printUnsortedArray(randArray4);
+    start = high_resolution_clock::now();
+    mergeSort(randArray4, 0, randArray4.size() - 1);
+    stop = high_resolution_clock::now();
+    printSortedArray(randArray4);
+    auto mergeTime = duration_cast<microseconds>(stop - start);
+    cout << "Time to complete: " << mergeTime.count() << " microseconds" << endl;
+    mergeSortStatus = checkIntsAscending(randArray4);
+
     cout << endl;
 
     cout << "Benchmark Summary:" << endl;
@@ -94,6 +107,8 @@ int main()
     checkStatus(insertionSortStatus);
     cout << "Selection Sort Time: " << selectionTime.count() << " microseconds ";
     checkStatus(selectionSortStatus);
+    cout << "Merge Sort Time: " << mergeTime.count() << " microseconds ";
+    checkStatus(mergeSortStatus);
 
     // PRACTICE
 
