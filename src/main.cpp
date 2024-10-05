@@ -100,7 +100,8 @@ int main()
 
     cout << endl;
 
-    cout << "Benchmark Summary:" << endl;
+    cout << "     Benchmark Summary:     " << endl;
+    cout << "============================" << endl;
     cout << "Bubble Sort Time: " << bubbleTime.count() << " microseconds ";
     checkStatus(bubbleSortStatus);
     cout << "Insertion Sort Time: " << insertionTime.count() << " microseconds ";
@@ -109,6 +110,11 @@ int main()
     checkStatus(selectionSortStatus);
     cout << "Merge Sort Time: " << mergeTime.count() << " microseconds ";
     checkStatus(mergeSortStatus);
+
+    cout << endl;
+
+    cout << "    Practice Algorithms    " << endl;
+    cout << "===========================" << endl;
 
     // PRACTICE
 
@@ -166,7 +172,7 @@ int main()
         checkStatus(InsCor);
     }
 
-        vector<int> randArrayD = randArray;
+    vector<int> randArrayD = randArray;
     cout << "Practice Merge Sort: ";
     start = high_resolution_clock::now();
     // MERGE SORT
