@@ -9,5 +9,6 @@ void practiceBubbleSort(vector<int> &arr);
 void practiceSelectionSort(vector<int> &arr);
 void practiceInsertionSort(vector<int> &arr);
 void practiceMergeSort(vector<int> &arr);
+void practiceQuickSort(vector<int> &arr);
 
 #endif

@@ -50,6 +50,17 @@ void practiceInsertionSort(vector<int> &arr)
  ******************************************************/
 void practiceMergeSort(vector<int> &arr)
 {
+    return;
+}
 
+/*******************************************************
+ *  @brief Practice Quick Sort in this function
+ *
+ * ## Details
+ *
+ * Must implement in ascending order to pass
+ ******************************************************/
+void practiceQuickSort(vector<int> &arr)
+{
     return;
 }

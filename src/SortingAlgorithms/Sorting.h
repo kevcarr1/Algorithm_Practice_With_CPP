@@ -9,5 +9,6 @@ void bubbleSort(vector<int> &arr);
 void insertionSort(vector<int> &arr);
 void selectionSort(vector<int> &arr);
 void mergeSort(vector<int> &arr, int left, int right);
+void quickSort(vector<int> &arr);
 
 #endif

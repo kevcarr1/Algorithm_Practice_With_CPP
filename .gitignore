@@ -1,2 +1,3 @@
 # ignore all build directories and files contained within
 bazel-*
+MODULE.bazel.lock

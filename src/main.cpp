@@ -29,6 +29,7 @@ int main()
     bool insertionSortStatus = false;
     bool selectionSortStatus = false;
     bool mergeSortStatus = false;
+    bool quickSortStatus = false;
 
     vector<int> randArray = generateRandomIntArray(length, min, max);
     auto start = high_resolution_clock::now();
@@ -98,6 +99,18 @@ int main()
     cout << "Time to complete: " << mergeTime.count() << " microseconds" << endl;
     mergeSortStatus = checkIntsAscending(randArray4);
 
+    // QUICK SORT
+    vector<int> randArray5 = randArray;
+    cout << "Quick Sort:" << endl;
+    printUnsortedArray(randArray5);
+    start = high_resolution_clock::now();
+    quickSort(randArray5);
+    stop = high_resolution_clock::now();
+    printSortedArray(randArray5);
+    auto quickSortTime = duration_cast<microseconds>(stop - start);
+    cout << "Time to complete: " << quickSortTime.count() << " microseconds" << endl;
+    quickSortStatus = checkIntsAscending(randArray5);
+
     cout << endl;
 
     cout << "     Benchmark Summary:     " << endl;
@@ -110,6 +123,8 @@ int main()
     checkStatus(selectionSortStatus);
     cout << "Merge Sort Time: " << mergeTime.count() << " microseconds ";
     checkStatus(mergeSortStatus);
+    cout << "Quick Sort Time: " << quickSortTime.count() << " microseconds ";
+    checkStatus(quickSortStatus);
 
     cout << endl;
 
@@ -189,6 +204,25 @@ int main()
     {
         checkStatus(prMergeStatus);
     }
+
+    vector<int> randArrayE = randArray;
+    cout << "Practice Quick Sort: ";
+    start = high_resolution_clock::now();
+    // QUICK SORT
+    practiceQuickSort(randArrayE);
+    stop = high_resolution_clock::now();
+    auto pQuickSortTime = duration_cast<microseconds>(stop - start);
+    cout << pQuickSortTime.count() << " microseconds ";
+    auto pQuickSortStatus = checkIntsAscending(randArrayD);
+    if (pQuickSortStatus == false && pQuickSortTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(pQuickSortStatus);
+    }
+
 
     return 0;
 }
