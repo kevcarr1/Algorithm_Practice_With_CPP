@@ -64,3 +64,15 @@ void practiceQuickSort(vector<int> &arr)
 {
     return;
 }
+
+/*******************************************************
+ *  @brief Practice Heap Sort in this function
+ *
+ * ## Details
+ *
+ * Must implement in ascending order to pass
+ ******************************************************/
+void practiceHeapSort(vector<int> &arr)
+{
+    return;
+}

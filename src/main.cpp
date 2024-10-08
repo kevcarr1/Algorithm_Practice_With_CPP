@@ -30,6 +30,7 @@ int main()
     bool selectionSortStatus = false;
     bool mergeSortStatus = false;
     bool quickSortStatus = false;
+    bool heapSortStatus = false;
 
     vector<int> randArray = generateRandomIntArray(length, min, max);
     auto start = high_resolution_clock::now();
@@ -111,6 +112,18 @@ int main()
     cout << "Time to complete: " << quickSortTime.count() << " microseconds" << endl;
     quickSortStatus = checkIntsAscending(randArray5);
 
+    // HEAP SORT
+    vector<int> randArray6 = randArray;
+    cout << "Heap Sort:" << endl;
+    printUnsortedArray(randArray6);
+    start = high_resolution_clock::now();
+    heapSort(randArray6);
+    stop = high_resolution_clock::now();
+    printSortedArray(randArray6);
+    auto heapSortTime = duration_cast<microseconds>(stop - start);
+    cout << "Time to complete: " << heapSortTime.count() << " microseconds" << endl;
+    heapSortStatus = checkIntsAscending(randArray6);
+
     cout << endl;
 
     cout << "     Benchmark Summary:     " << endl;
@@ -125,6 +138,8 @@ int main()
     checkStatus(mergeSortStatus);
     cout << "Quick Sort Time: " << quickSortTime.count() << " microseconds ";
     checkStatus(quickSortStatus);
+    cout << "Heap Sort Time: " << heapSortTime.count() << " microseconds ";
+    checkStatus(heapSortStatus);
 
     cout << endl;
 
@@ -213,7 +228,7 @@ int main()
     stop = high_resolution_clock::now();
     auto pQuickSortTime = duration_cast<microseconds>(stop - start);
     cout << pQuickSortTime.count() << " microseconds ";
-    auto pQuickSortStatus = checkIntsAscending(randArrayD);
+    auto pQuickSortStatus = checkIntsAscending(randArrayE);
     if (pQuickSortStatus == false && pQuickSortTime.count() == 0)
     {
         cout << "[NO IMPLEMENTATION]" << endl;
@@ -223,6 +238,23 @@ int main()
         checkStatus(pQuickSortStatus);
     }
 
+    vector<int> randArrayF = randArray;
+    cout << "Practice Heap Sort: ";
+    start = high_resolution_clock::now();
+    // HEAP SORT
+    practiceHeapSort(randArrayF);
+    stop = high_resolution_clock::now();
+    auto pHeapSortTime = duration_cast<microseconds>(stop - start);
+    cout << pHeapSortTime.count() << " microseconds ";
+    auto pHeapSortStatus = checkIntsAscending(randArrayF);
+    if (pQuickSortStatus == false && pQuickSortTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(pQuickSortStatus);
+    }
 
     return 0;
 }
