@@ -4,10 +4,16 @@
 using namespace std;
 
 /*********************************************************
- * @brief Ascending order sort using Selection Sort Algorithm
+ * @brief Sorts an array using the Selection Sort Algorithm
  *
  * ## Details
  *
+ * This function sorts the input array in-place by
+ * repeatedly finding the minimum element from the
+ * unsorted part and putting it at the beginning of the
+ * sorted part.
+ *
+ * @param arr The array to be sorted
  ********************************************************/
 void selectionSort(vector<int> &arr)
 {

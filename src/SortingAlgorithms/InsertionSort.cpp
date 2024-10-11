@@ -7,7 +7,7 @@ using namespace std;
 /** @brief Insertion Sort for a vector of ints. Will
  *         sort in ascending order
  *
- * ## Details
+ * ### Details
  *
  * - Key Concept:
  *      The 'key' holds the value of the current
@@ -21,6 +21,8 @@ using namespace std;
  * - Insertion:
  *      Once the correct position is found, the 'key' is
  *      inserted.
+ *
+ * @param arr The array to be sorted
  *********************************************************/
 void insertionSort(vector<int> &arr)
 {

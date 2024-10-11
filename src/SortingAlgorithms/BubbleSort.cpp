@@ -3,6 +3,18 @@
 
 using namespace std;
 
+/**************************************************************
+ * @brief Sorts an array using the Bubble Sort Algorithm
+ *
+ * ### Details
+ *
+ * This function sorts the input array by repeatedly stepping
+ * through the list, comparing adjacent elements, and swapping
+ * them if they are in the wrong order. The process is
+ * repeated until the array is fully sorted.
+ *
+ * @param arr The array to be sorted
+ *************************************************************/
 void bubbleSort(vector<int> &arr)
 {
     int size = arr.size();

@@ -69,7 +69,7 @@ static void benchmarkingSortingAlgorithms(int length)
     // MERGE SORT
     vector<int> randArray4 = randArray;
     start = high_resolution_clock::now();
-    mergeSort(randArray4, 0, randArray4.size() - 1);
+    mergeSort(randArray4);
     stop = high_resolution_clock::now();
     auto mergeTime = duration_cast<microseconds>(stop - start);
 
@@ -213,7 +213,7 @@ static void practiceSortingAlgorithms(int length)
     auto pHeapSortTime = duration_cast<microseconds>(stop - start);
     cout << pHeapSortTime.count() << " microseconds ";
     auto pHeapSortStatus = checkIntsAscending(randArrayF);
-    if (pQuickSortStatus == false && pQuickSortTime.count() == 0)
+    if (pQuickSortStatus == false && pHeapSortTime.count() == 0)
     {
         cout << "[NO IMPLEMENTATION]" << endl;
     }
