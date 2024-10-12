@@ -7,6 +7,7 @@ cc_library(
         "MergeSort.cpp", 
         "QuickSort.cpp",
         "HeapSort.cpp",
+        "TimSort.cpp"
     ],
     hdrs = ["Sorting.h"],
     visibility = ["//src:__pkg__"],

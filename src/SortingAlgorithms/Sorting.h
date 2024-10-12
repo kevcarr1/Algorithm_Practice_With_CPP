@@ -11,5 +11,6 @@ void selectionSort(vector<int> &arr);
 void mergeSort(vector<int> &arr);
 void quickSort(vector<int> &arr);
 void heapSort(vector<int> &arr);
+void timSort(vector<int> &arr);
 
 #endif

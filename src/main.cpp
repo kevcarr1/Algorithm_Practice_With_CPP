@@ -87,6 +87,13 @@ static void benchmarkingSortingAlgorithms(int length)
     stop = high_resolution_clock::now();
     auto heapSortTime = duration_cast<microseconds>(stop - start);
 
+    // TIM SORT
+    vector<int> randArray7 = randArray;
+    start = high_resolution_clock::now();
+    timSort(randArray7);
+    stop = high_resolution_clock::now();
+    auto timSortTime = duration_cast<microseconds>(stop - start);
+
     cout << "     Benchmark Summary:     " << endl;
     cout << "============================" << endl;
     cout << "Bubble Sort Time: " << bubbleTime.count() << " microseconds " << endl;
@@ -95,6 +102,7 @@ static void benchmarkingSortingAlgorithms(int length)
     cout << "Merge Sort Time: " << mergeTime.count() << " microseconds " << endl;
     cout << "Quick Sort Time: " << quickSortTime.count() << " microseconds " << endl;
     cout << "Heap Sort Time: " << heapSortTime.count() << " microseconds " << endl;
+    cout << "Tim Sort Time: " << timSortTime.count() << " microseconds " << endl;
 
     return;
 }
@@ -213,13 +221,31 @@ static void practiceSortingAlgorithms(int length)
     auto pHeapSortTime = duration_cast<microseconds>(stop - start);
     cout << pHeapSortTime.count() << " microseconds ";
     auto pHeapSortStatus = checkIntsAscending(randArrayF);
-    if (pQuickSortStatus == false && pHeapSortTime.count() == 0)
+    if (pHeapSortStatus == false && pHeapSortTime.count() == 0)
     {
         cout << "[NO IMPLEMENTATION]" << endl;
     }
     else
     {
         checkStatus(pHeapSortStatus);
+    }
+
+    vector<int> randArrayG = randArray;
+    cout << "Practice TimSort: ";
+    start = high_resolution_clock::now();
+    // TIM SORT
+    practiceTimSort(randArrayG);
+    stop = high_resolution_clock::now();
+    auto pTimSortTime = duration_cast<microseconds>(stop - start);
+    cout << pTimSortTime.count() << " microseconds ";
+    auto pTimSortStatus = checkIntsAscending(randArrayG);
+    if (pTimSortStatus == false && pTimSortTime.count() == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(pTimSortStatus);
     }
 
     return;

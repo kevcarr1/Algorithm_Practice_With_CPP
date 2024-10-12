@@ -11,5 +11,6 @@ void practiceInsertionSort(vector<int> &arr);
 void practiceMergeSort(vector<int> &arr);
 void practiceQuickSort(vector<int> &arr);
 void practiceHeapSort(vector<int> &arr);
+void practiceTimSort(vector<int> &arr);
 
 #endif
