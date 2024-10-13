@@ -81,8 +81,6 @@ static void practiceSortingAlgorithms(int length)
     int min = 0;
     int max = 100;
     vector<int> randArray = generateRandomIntArray(length, min, max);
-    auto start = high_resolution_clock::now();
-    auto stop = high_resolution_clock::now();
 
     // PRACTICE
     cout << "    PRACTICE RESULTS    " << endl;
@@ -102,42 +100,19 @@ static void practiceSortingAlgorithms(int length)
     bool prSelTest = PracticeSelectionSortObj.isAscending();
     PracticeCheckStatus(prSelTest, pSelTime);
 
-    vector<int> randArrayC = randArray;
     cout << "Practice Insertion Sort: ";
-    start = high_resolution_clock::now();
-    // INSERTION SORT
-    practiceInsertionSort(randArrayC);
-    stop = high_resolution_clock::now();
-    auto prInsTime = duration_cast<microseconds>(stop - start);
-    cout << prInsTime.count() << " microseconds ";
-    auto InsCor = checkIntsAscending(randArrayC);
-    if (InsCor == false && prInsTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(InsCor);
-    }
+    Benchmark InsertionSortTestObj(practiceInsertionSort, randArray);
+    int pInsertTime = InsertionSortTestObj.getTimeToCalcMs();
+    cout << pInsertTime << " microseconds ";
+    bool prInsertTest = InsertionSortTestObj.isAscending();
+    PracticeCheckStatus(prInsertTest, pInsertTime);
 
-    vector<int> randArrayD = randArray;
     cout << "Practice Merge Sort: ";
-    fflush(stdout);
-    start = high_resolution_clock::now();
-    // MERGE SORT
-    practiceMergeSort(randArrayD);
-    stop = high_resolution_clock::now();
-    auto prMergeTime = duration_cast<microseconds>(stop - start);
-    cout << prMergeTime.count() << " microseconds ";
-    auto prMergeStatus = checkIntsAscending(randArrayD);
-    if (prMergeStatus == false && prMergeTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(prMergeStatus);
-    }
+    Benchmark MergeSortTestObj(practiceMergeSort, randArray);
+    int pMergeTime = MergeSortTestObj.getTimeToCalcMs();
+    cout << pMergeTime << " microseconds ";
+    auto prMergeStatus = MergeSortTestObj.isAscending();
+    PracticeCheckStatus(prMergeStatus, pMergeTime);
 
     cout << "Practice Quick Sort: ";
     Benchmark PracticeQuickSortObj(practiceQuickSort, randArray);
@@ -146,48 +121,26 @@ static void practiceSortingAlgorithms(int length)
     auto pQuickSortStatus = PracticeQuickSortObj.isAscending();
     PracticeCheckStatus(pQuickSortStatus, pQuickTime);
 
-    vector<int> randArrayF = randArray;
     cout << "Practice Heap Sort: ";
-    start = high_resolution_clock::now();
-    // HEAP SORT
-    practiceHeapSort(randArrayF);
-    stop = high_resolution_clock::now();
-    auto pHeapSortTime = duration_cast<microseconds>(stop - start);
-    cout << pHeapSortTime.count() << " microseconds ";
-    auto pHeapSortStatus = checkIntsAscending(randArrayF);
-    if (pHeapSortStatus == false && pHeapSortTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(pHeapSortStatus);
-    }
+    Benchmark HeapSortTestObj(practiceHeapSort, randArray);
+    int pHeapTime = HeapSortTestObj.getTimeToCalcMs();
+    cout << pHeapTime << " microseconds ";
+    bool pHeapSortStatus = HeapSortTestObj.isAscending();
+    PracticeCheckStatus(pHeapSortStatus, pHeapTime);
 
-    vector<int> randArrayG = randArray;
     cout << "Practice TimSort: ";
-    start = high_resolution_clock::now();
-    // TIM SORT
-    practiceTimSort(randArrayG);
-    stop = high_resolution_clock::now();
-    auto pTimSortTime = duration_cast<microseconds>(stop - start);
-    cout << pTimSortTime.count() << " microseconds ";
-    auto pTimSortStatus = checkIntsAscending(randArrayG);
-    if (pTimSortStatus == false && pTimSortTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(pTimSortStatus);
-    }
+    Benchmark TimSortTestObj(practiceTimSort, randArray);
+    int pTimSortTime = TimSortTestObj.getTimeToCalcMs();
+    cout << pTimSortTime << " microseconds ";
+    auto pTimSortStatus = TimSortTestObj.isAscending();
+    PracticeCheckStatus(pTimSortStatus, pTimSortTime);
 
     return;
 }
 
 void PracticeCheckStatus(bool testResult, int time)
 {
-    if (testResult == false && time == 0)
+    if (testResult == false && time <= 1)
     {
         cout << "[NO IMPLEMENTATION]" << endl;
     }
