@@ -1,12 +1,14 @@
 #include <iostream>
 #include <chrono>
 #include "TestData/TestData.h"
+#include "Benchmarking/Benchmark.h"
 #include "SortingAlgorithms/Sorting.h"
 #include "Practice/practice.h"
 
 using namespace std;
 using namespace std::chrono;
 
+void PracticeCheckStatus(bool testResult, int time);
 void printSortedArray(vector<int> &arr);
 void printUnsortedArray(vector<int> &arr);
 void printArray(vector<int> &arr);
@@ -42,67 +44,31 @@ static void benchmarkingSortingAlgorithms(int length)
     int max = 100;
 
     vector<int> randArray = generateRandomIntArray(length, min, max);
-    auto start = high_resolution_clock::now();
-    auto stop = high_resolution_clock::now();
 
-    // BUBBLE SORT
-    vector<int> randArray1 = randArray;
-    start = high_resolution_clock::now();
-    bubbleSort(randArray1);
-    stop = high_resolution_clock::now();
-    auto bubbleTime = duration_cast<microseconds>(stop - start);
-
-    // INSERTION SORT
-    vector<int> randArray2 = randArray;
-    start = high_resolution_clock::now();
-    insertionSort(randArray2);
-    stop = high_resolution_clock::now();
-    auto insertionTime = duration_cast<microseconds>(stop - start);
-
-    // SELECTION SORT
-    vector<int> randArray3 = randArray;
-    start = high_resolution_clock::now();
-    selectionSort(randArray3);
-    stop = high_resolution_clock::now();
-    auto selectionTime = duration_cast<microseconds>(stop - start);
-
-    // MERGE SORT
-    vector<int> randArray4 = randArray;
-    start = high_resolution_clock::now();
-    mergeSort(randArray4);
-    stop = high_resolution_clock::now();
-    auto mergeTime = duration_cast<microseconds>(stop - start);
-
-    // QUICK SORT
-    vector<int> randArray5 = randArray;
-    start = high_resolution_clock::now();
-    quickSort(randArray5);
-    stop = high_resolution_clock::now();
-    auto quickSortTime = duration_cast<microseconds>(stop - start);
-
-    // HEAP SORT
-    vector<int> randArray6 = randArray;
-    start = high_resolution_clock::now();
-    heapSort(randArray6);
-    stop = high_resolution_clock::now();
-    auto heapSortTime = duration_cast<microseconds>(stop - start);
-
-    // TIM SORT
-    vector<int> randArray7 = randArray;
-    start = high_resolution_clock::now();
-    timSort(randArray7);
-    stop = high_resolution_clock::now();
-    auto timSortTime = duration_cast<microseconds>(stop - start);
+    Benchmark BubbleSortObj(bubbleSort, randArray);
+    Benchmark InsertionSortObj(insertionSort, randArray);
+    Benchmark SelectionSortObj(selectionSort, randArray);
+    Benchmark MergeSortObj(mergeSort, randArray);
+    Benchmark QuickSortObj(quickSort, randArray);
+    Benchmark HeapSortObj(heapSort, randArray);
+    Benchmark TimSortObj(timSort, randArray);
 
     cout << "     Benchmark Summary:     " << endl;
     cout << "============================" << endl;
-    cout << "Bubble Sort Time: " << bubbleTime.count() << " microseconds " << endl;
-    cout << "Insertion Sort Time: " << insertionTime.count() << " microseconds " << endl;
-    cout << "Selection Sort Time: " << selectionTime.count() << " microseconds " << endl;
-    cout << "Merge Sort Time: " << mergeTime.count() << " microseconds " << endl;
-    cout << "Quick Sort Time: " << quickSortTime.count() << " microseconds " << endl;
-    cout << "Heap Sort Time: " << heapSortTime.count() << " microseconds " << endl;
-    cout << "Tim Sort Time: " << timSortTime.count() << " microseconds " << endl;
+    cout << "Bubble Sort Time: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(BubbleSortObj.isAscending());
+    cout << "Insertion Sort Time: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(InsertionSortObj.isAscending());
+    cout << "Selection Sort Time: " << SelectionSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(SelectionSortObj.isAscending());
+    cout << "Merge Sort Time: " << MergeSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(MergeSortObj.isAscending());
+    cout << "Quick Sort Time: " << QuickSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(QuickSortObj.isAscending());
+    cout << "Heap Sort Time: " << HeapSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(HeapSortObj.isAscending());
+    cout << "Tim Sort Time: " << TimSortObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(TimSortObj.isAscending());
 
     return;
 }
@@ -122,41 +88,19 @@ static void practiceSortingAlgorithms(int length)
     cout << "    PRACTICE RESULTS    " << endl;
     cout << "========================" << endl;
 
-    vector<int> randArrayA = randArray;
     cout << "Practice Bubble Sort: ";
-    start = high_resolution_clock::now();
-    // BUBBLE SORT PRACTICE
-    practiceBubbleSort(randArrayA);
-    stop = high_resolution_clock::now();
-    auto bubTestTime = duration_cast<microseconds>(stop - start);
-    cout << bubTestTime.count() << " microseconds ";
-    bool prBubTest = checkIntsAscending(randArrayA);
-    if (prBubTest == false && bubTestTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(prBubTest);
-    }
+    Benchmark PracticeBubbleSortObj(practiceBubbleSort, randArray);
+    int pBubTime = PracticeBubbleSortObj.getTimeToCalcMs();
+    cout << pBubTime << " microseconds ";
+    bool prBubTest = PracticeBubbleSortObj.isAscending();
+    PracticeCheckStatus(prBubTest, pBubTime);
 
-    vector<int> randArrayB = randArray;
     cout << "Practice Selection Sort: ";
-    start = high_resolution_clock::now();
-    // SELECTION SORT PRACTICE
-    practiceSelectionSort(randArrayB);
-    stop = high_resolution_clock::now();
-    auto selectSortTime = duration_cast<microseconds>(stop - start);
-    cout << selectSortTime.count() << " microseconds ";
-    bool prSelTest = checkIntsAscending(randArrayB);
-    if (prSelTest == false && selectSortTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(prSelTest);
-    }
+    Benchmark PracticeSelectionSortObj(practiceSelectionSort, randArray);
+    int pSelTime = PracticeSelectionSortObj.getTimeToCalcMs();
+    cout << pSelTime << " microseconds ";
+    bool prSelTest = PracticeSelectionSortObj.isAscending();
+    PracticeCheckStatus(prSelTest, pSelTime);
 
     vector<int> randArrayC = randArray;
     cout << "Practice Insertion Sort: ";
@@ -178,6 +122,7 @@ static void practiceSortingAlgorithms(int length)
 
     vector<int> randArrayD = randArray;
     cout << "Practice Merge Sort: ";
+    fflush(stdout);
     start = high_resolution_clock::now();
     // MERGE SORT
     practiceMergeSort(randArrayD);
@@ -194,23 +139,12 @@ static void practiceSortingAlgorithms(int length)
         checkStatus(prMergeStatus);
     }
 
-    vector<int> randArrayE = randArray;
     cout << "Practice Quick Sort: ";
-    start = high_resolution_clock::now();
-    // QUICK SORT
-    practiceQuickSort(randArrayE);
-    stop = high_resolution_clock::now();
-    auto pQuickSortTime = duration_cast<microseconds>(stop - start);
-    cout << pQuickSortTime.count() << " microseconds ";
-    auto pQuickSortStatus = checkIntsAscending(randArrayE);
-    if (pQuickSortStatus == false && pQuickSortTime.count() == 0)
-    {
-        cout << "[NO IMPLEMENTATION]" << endl;
-    }
-    else
-    {
-        checkStatus(pQuickSortStatus);
-    }
+    Benchmark PracticeQuickSortObj(practiceQuickSort, randArray);
+    int pQuickTime = PracticeQuickSortObj.getTimeToCalcMs();
+    cout << pQuickTime << " microseconds ";
+    auto pQuickSortStatus = PracticeQuickSortObj.isAscending();
+    PracticeCheckStatus(pQuickSortStatus, pQuickTime);
 
     vector<int> randArrayF = randArray;
     cout << "Practice Heap Sort: ";
@@ -246,6 +180,20 @@ static void practiceSortingAlgorithms(int length)
     else
     {
         checkStatus(pTimSortStatus);
+    }
+
+    return;
+}
+
+void PracticeCheckStatus(bool testResult, int time)
+{
+    if (testResult == false && time == 0)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(testResult);
     }
 
     return;

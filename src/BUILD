@@ -5,5 +5,6 @@ cc_binary(
         "//src/TestData:TestData",
         "//src/SortingAlgorithms:SortingAlgorithms",
         "//src/Practice:Practice",
+        "//src/Benchmarking:Benchmark",
     ],
 )
