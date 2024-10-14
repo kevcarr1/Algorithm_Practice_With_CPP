@@ -1,5 +1,5 @@
-#ifndef TestData
-#define TestData
+#ifndef TEST_DATA_H
+#define TEST_DATA_H
 
 /* Includes */
 #include <vector>

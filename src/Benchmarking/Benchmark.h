@@ -1,3 +1,6 @@
+#ifndef BENCHMARK_H
+#define BENCHMARK_H
+
 #include <vector>
 #include <chrono>
 
@@ -74,3 +77,5 @@ public:
         return ordered;
     }
 };
+
+#endif
