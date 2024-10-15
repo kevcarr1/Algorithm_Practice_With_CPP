@@ -6,5 +6,6 @@ cc_binary(
         "//src/SortingAlgorithms:SortingAlgorithms",
         "//src/Practice:Practice",
         "//src/Benchmarking:Benchmark",
+        "//src/SearchingAlgorithms:SearchingAlgorithms",
     ],
 )

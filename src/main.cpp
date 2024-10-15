@@ -7,6 +7,7 @@
 #include "SortingAlgorithms/Sorting.h"
 #include "Practice/practice.h"
 #include "TestData/GenUsers.h"
+#include "SearchingAlgorithms/Searching.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -54,8 +55,13 @@ int main()
         cout << "How many users would you like to create? ";
         cin >> numUsers;
 
-        createUsers(numUsers);
+        User **users = createUsers(numUsers);
         displayUsers();
+
+        int k = findUserByName_LinearSearch("Waldo Emerson", users);
+
+        cout << "Found: " << users[k]->getFullName() << " at position " << k << endl;
+
         deleteUsers();
     }
     else

@@ -9,5 +9,5 @@ cc_library(
         "TestData.h", 
         "GenUsers.h"
         ],
-    visibility = ["//src:__pkg__"],
+    visibility = ["//src:__pkg__", "//src/SearchingAlgorithms:__pkg__"],
 )

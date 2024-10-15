@@ -33,14 +33,17 @@ public:
         lastName = lastNames[lastNameIdx];
     }
 
+    User(const string first, const string last) : firstName(first), lastName(last) {}
+
     string getFullName(void)
     {
         return firstName + " " + lastName;
     }
 };
 
-void createUsers(int n);
+User **createUsers(int n);
 void displayUsers(void);
 void deleteUsers(void);
+int getNumUsers(void);
 
 #endif

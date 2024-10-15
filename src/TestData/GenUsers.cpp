@@ -5,14 +5,27 @@ static int numUsers = 0;
 
 User **users;
 
-void createUsers(int n)
+User **createUsers(int n)
 {
+    int mysteryPlacement;
+
     numUsers = n;
+    mysteryPlacement = rand() % numUsers;
+
     users = new User *[numUsers];
     for (int i = 0; i < numUsers; ++i)
     {
-        users[i] = new User();
+        if (i == mysteryPlacement)
+        {
+            users[i] = new User("Waldo", "Emerson");
+        }
+        else
+        {
+            users[i] = new User();
+        }
     }
+
+    return users;
 }
 
 void displayUsers(void)
@@ -68,4 +81,9 @@ void deleteUsers(void)
     delete[] users;
 
     return;
+}
+
+int getNumUsers(void)
+{
+    return numUsers;
 }
