@@ -25,7 +25,7 @@ private:
     }
 
 public:
-    Benchmark(void (*func)(vector<int> &arr), vector<int> arr)
+    Benchmark(void (*func)(vector<int> &arr), const vector<int> &arr)
     {
         funcPtr = func;
         arrayOfInts = arr;
