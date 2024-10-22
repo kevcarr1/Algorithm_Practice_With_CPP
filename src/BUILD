@@ -9,3 +9,17 @@ cc_binary(
         "//src/SearchingAlgorithms:SearchingAlgorithms",
     ],
 )
+
+cc_binary(
+    name = "sanitize",
+    srcs = ["main.cpp"],
+    deps = [
+        "//src/TestData:TestData",
+        "//src/SortingAlgorithms:SortingAlgorithms",
+        "//src/Practice:Practice",
+        "//src/Benchmarking:Benchmark",
+        "//src/SearchingAlgorithms:SearchingAlgorithms",
+    ],
+    copts = ["-fsanitize=address"],
+    linkopts = ["-fsanitize=address"],
+)

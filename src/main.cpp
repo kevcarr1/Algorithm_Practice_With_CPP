@@ -32,7 +32,7 @@ int main()
     cout << endl;
     cout << "What would you like to do?" << endl;
     cout << "1 - Array Sorting" << endl;
-    cout << "2 - Generate Usrs" << endl;
+    cout << "2 - Searching Examples" << endl;
     cout << "Choice: ";
     cin >> choice;
 
@@ -58,11 +58,25 @@ int main()
         User **users = createUsers(numUsers);
         displayUsers();
 
+        cout << "Searching using Linear Search:" << endl;
         int k = findUserByName_LinearSearch("Waldo Emerson", users);
 
         cout << "Found: " << users[k]->getFullName() << " at position " << k << endl;
 
+        cout << endl;
+
         deleteUsers();
+
+        cout << "Searching new table for Waldo Emerson" << endl;
+
+        vector<User> userList(numUsers);
+        User foundUser;
+
+        createUsers2(userList, numUsers);
+
+        foundUser = findUser_hashmap(userList, "Waldo Emerson");
+
+        cout << "FoundUser ID: " << foundUser.getUniqueID() << endl;
     }
     else
     {
@@ -123,33 +137,51 @@ static void practiceSortingAlgorithms(int length)
     cout << "    PRACTICE RESULTS    " << endl;
     cout << "========================" << endl;
 
-    cout << "Practice Bubble Sort: ";
+    cout << "Practice Bubble Sort: " << endl;
+    printArray(randArray);
+    cout << endl;
     Benchmark PracticeBubbleSortObj(practiceBubbleSort, randArray);
+    printArray(randArray);
+    cout << endl;
     int pBubTime = PracticeBubbleSortObj.getTimeToCalcMs();
     cout << pBubTime << " microseconds ";
     bool prBubTest = PracticeBubbleSortObj.isAscending();
     PracticeCheckStatus(prBubTest, pBubTime);
 
-    cout << "Practice Selection Sort: ";
+    cout << "Practice Selection Sort: " << endl;
+    printArray(randArray);
+    cout << endl;
     Benchmark PracticeSelectionSortObj(practiceSelectionSort, randArray);
+    printArray(randArray);
+    cout << endl;
     int pSelTime = PracticeSelectionSortObj.getTimeToCalcMs();
     cout << pSelTime << " microseconds ";
     bool prSelTest = PracticeSelectionSortObj.isAscending();
     PracticeCheckStatus(prSelTest, pSelTime);
 
-    cout << "Practice Insertion Sort: ";
+    cout << "Practice Insertion Sort: " << endl;
+    printArray(randArray);
+    cout << endl;
     Benchmark InsertionSortTestObj(practiceInsertionSort, randArray);
+    printArray(randArray);
+    cout << endl;
     int pInsertTime = InsertionSortTestObj.getTimeToCalcMs();
     cout << pInsertTime << " microseconds ";
     bool prInsertTest = InsertionSortTestObj.isAscending();
     PracticeCheckStatus(prInsertTest, pInsertTime);
 
-    cout << "Practice Merge Sort: ";
+    cout << "Practice Merge Sort: " << endl;
+    // printArray(randArray);
+    // cout << endl;
+    fflush(stdout);
     Benchmark MergeSortTestObj(practiceMergeSort, randArray);
+    fflush(stdout);
     int pMergeTime = MergeSortTestObj.getTimeToCalcMs();
     cout << pMergeTime << " microseconds ";
     auto prMergeStatus = MergeSortTestObj.isAscending();
     PracticeCheckStatus(prMergeStatus, pMergeTime);
+
+    fflush(stdout);
 
     cout << "Practice Quick Sort: ";
     Benchmark PracticeQuickSortObj(practiceQuickSort, randArray);
@@ -157,6 +189,8 @@ static void practiceSortingAlgorithms(int length)
     cout << pQuickTime << " microseconds ";
     auto pQuickSortStatus = PracticeQuickSortObj.isAscending();
     PracticeCheckStatus(pQuickSortStatus, pQuickTime);
+
+    fflush(stdout);
 
     cout << "Practice Heap Sort: ";
     Benchmark HeapSortTestObj(practiceHeapSort, randArray);

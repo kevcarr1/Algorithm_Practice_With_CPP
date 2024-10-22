@@ -1,3 +1,4 @@
+#include <vector>
 #include "GenUsers.h"
 
 using namespace std;
@@ -26,6 +27,28 @@ User **createUsers(int n)
     }
 
     return users;
+}
+
+void createUsers2(vector<User> &users, int numUsers2)
+{
+    int mysteryPlacement;
+
+    mysteryPlacement = rand() % numUsers;
+
+    for (int i = 0; i < numUsers2; i++)
+    {
+        if (i == mysteryPlacement)
+        {
+            users[i] = User("Waldo", "Emerson", 39212);
+        }
+        else
+        {
+
+            users[i] = User();
+        }
+    }
+
+    return;
 }
 
 void displayUsers(void)

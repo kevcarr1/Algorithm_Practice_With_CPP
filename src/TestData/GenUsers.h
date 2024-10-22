@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdlib> // rand()
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class User
 private:
     string firstName;
     string lastName;
+    int uniqueID;
 
 public:
     User(void)
@@ -31,17 +33,37 @@ public:
 
         firstName = firstNames[firstNameIdx];
         lastName = lastNames[lastNameIdx];
+
+        uniqueID = rand() % 100000;
     }
 
-    User(const string first, const string last) : firstName(first), lastName(last) {}
+    User(const string first, const string last) : firstName(first), lastName(last)
+    {
+        uniqueID = rand() % 100000;
+    }
+
+    User(const string first, const string last, int id) : firstName{first}, lastName{last}, uniqueID{id} {}
 
     string getFullName(void)
     {
         return firstName + " " + lastName;
     }
+
+    int getUniqueID(void)
+    {
+        return uniqueID;
+    }
+
+    bool operator==(const User &other) const
+    {
+        return firstName == other.firstName && lastName == other.lastName;
+    }
 };
 
+// Function Prototypes
+
 User **createUsers(int n);
+void createUsers2(vector<User> &users, int numUsers);
 void displayUsers(void);
 void deleteUsers(void);
 int getNumUsers(void);

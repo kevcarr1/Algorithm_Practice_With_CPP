@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -11,7 +12,6 @@ using namespace std;
  ******************************************************/
 void practiceBubbleSort(vector<int> &arr)
 {
-
     return;
 }
 
@@ -24,7 +24,6 @@ void practiceBubbleSort(vector<int> &arr)
  ******************************************************/
 void practiceSelectionSort(vector<int> &arr)
 {
-
     return;
 }
 
@@ -37,7 +36,11 @@ void practiceSelectionSort(vector<int> &arr)
  ******************************************************/
 void practiceInsertionSort(vector<int> &arr)
 {
+    return;
+}
 
+static void pMergeSort(vector<int> &arr, int left, int right)
+{
     return;
 }
 
