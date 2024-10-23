@@ -78,4 +78,7 @@ public:
     }
 };
 
+// FUNCTION PROTOTYPES
+void benchmarkingSortingAlgorithms(int length);
+
 #endif

@@ -1,6 +1,6 @@
 cc_library(
     name = "Practice",
-    srcs = ["practice.cpp"],
+    srcs = ["practiceSorts.cpp"],
     hdrs = ["practice.h"],
     visibility = ["//src:__pkg__"],
 )

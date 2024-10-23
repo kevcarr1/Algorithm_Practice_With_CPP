@@ -13,10 +13,7 @@ using namespace std;
 using namespace std::chrono;
 
 void PracticeCheckStatus(bool testResult, int time);
-void printSortedArray(vector<int> &arr);
-void printUnsortedArray(vector<int> &arr);
-void printArray(vector<int> &arr);
-static void benchmarkingSortingAlgorithms(int length);
+
 static void practiceSortingAlgorithms(int length);
 
 int main()
@@ -50,14 +47,18 @@ int main()
     }
     else if (choice == 2)
     {
+        // Prompt User
         cout << endl;
         cout << "Test User Names" << endl;
         cout << "How many users would you like to create? ";
         cin >> numUsers;
 
+        // Create and Display User List
+        // TODO: replace array of User pointers with scoped User vector
         User **users = createUsers(numUsers);
         displayUsers();
 
+        // Search using Linear Search
         cout << "Searching using Linear Search:" << endl;
         int k = findUserByName_LinearSearch("Waldo Emerson", users);
 
@@ -69,6 +70,8 @@ int main()
 
         cout << "Searching new table for Waldo Emerson" << endl;
 
+        // Searching using hashmap
+        // TODO: implement benchmarking for search algorithms
         vector<User> userList(numUsers);
         User foundUser;
 
@@ -87,44 +90,6 @@ int main()
 }
 
 /************************************************************
- * @brief Benchmarks the sorting algorithms
- ***********************************************************/
-static void benchmarkingSortingAlgorithms(int length)
-{
-    int min = 1;
-    int max = 100;
-
-    vector<int> randArray = generateRandomIntArray(length, min, max);
-
-    Benchmark BubbleSortObj(bubbleSort, randArray);
-    Benchmark InsertionSortObj(insertionSort, randArray);
-    Benchmark SelectionSortObj(selectionSort, randArray);
-    Benchmark MergeSortObj(mergeSort, randArray);
-    Benchmark QuickSortObj(quickSort, randArray);
-    Benchmark HeapSortObj(heapSort, randArray);
-    Benchmark TimSortObj(timSort, randArray);
-
-    cout << "     Benchmark Summary:     " << endl;
-    cout << "============================" << endl;
-    cout << "Bubble Sort Time: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(BubbleSortObj.isAscending());
-    cout << "Insertion Sort Time: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(InsertionSortObj.isAscending());
-    cout << "Selection Sort Time: " << SelectionSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(SelectionSortObj.isAscending());
-    cout << "Merge Sort Time: " << MergeSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(MergeSortObj.isAscending());
-    cout << "Quick Sort Time: " << QuickSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(QuickSortObj.isAscending());
-    cout << "Heap Sort Time: " << HeapSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(HeapSortObj.isAscending());
-    cout << "Tim Sort Time: " << TimSortObj.getTimeToCalcMs() << " microseconds ";
-    checkStatus(TimSortObj.isAscending());
-
-    return;
-}
-
-/************************************************************
  * @brief Function groups practice function calls together
  ***********************************************************/
 static void practiceSortingAlgorithms(int length)
@@ -137,51 +102,33 @@ static void practiceSortingAlgorithms(int length)
     cout << "    PRACTICE RESULTS    " << endl;
     cout << "========================" << endl;
 
-    cout << "Practice Bubble Sort: " << endl;
-    printArray(randArray);
-    cout << endl;
+    cout << "Practice Bubble Sort: ";
     Benchmark PracticeBubbleSortObj(practiceBubbleSort, randArray);
-    printArray(randArray);
-    cout << endl;
     int pBubTime = PracticeBubbleSortObj.getTimeToCalcMs();
     cout << pBubTime << " microseconds ";
     bool prBubTest = PracticeBubbleSortObj.isAscending();
     PracticeCheckStatus(prBubTest, pBubTime);
 
-    cout << "Practice Selection Sort: " << endl;
-    printArray(randArray);
-    cout << endl;
+    cout << "Practice Selection Sort: ";
     Benchmark PracticeSelectionSortObj(practiceSelectionSort, randArray);
-    printArray(randArray);
-    cout << endl;
     int pSelTime = PracticeSelectionSortObj.getTimeToCalcMs();
     cout << pSelTime << " microseconds ";
     bool prSelTest = PracticeSelectionSortObj.isAscending();
     PracticeCheckStatus(prSelTest, pSelTime);
 
-    cout << "Practice Insertion Sort: " << endl;
-    printArray(randArray);
-    cout << endl;
+    cout << "Practice Insertion Sort: ";
     Benchmark InsertionSortTestObj(practiceInsertionSort, randArray);
-    printArray(randArray);
-    cout << endl;
     int pInsertTime = InsertionSortTestObj.getTimeToCalcMs();
     cout << pInsertTime << " microseconds ";
     bool prInsertTest = InsertionSortTestObj.isAscending();
     PracticeCheckStatus(prInsertTest, pInsertTime);
 
-    cout << "Practice Merge Sort: " << endl;
-    // printArray(randArray);
-    // cout << endl;
-    fflush(stdout);
+    cout << "Practice Merge Sort: ";
     Benchmark MergeSortTestObj(practiceMergeSort, randArray);
-    fflush(stdout);
     int pMergeTime = MergeSortTestObj.getTimeToCalcMs();
     cout << pMergeTime << " microseconds ";
     auto prMergeStatus = MergeSortTestObj.isAscending();
     PracticeCheckStatus(prMergeStatus, pMergeTime);
-
-    fflush(stdout);
 
     cout << "Practice Quick Sort: ";
     Benchmark PracticeQuickSortObj(practiceQuickSort, randArray);
@@ -189,8 +136,6 @@ static void practiceSortingAlgorithms(int length)
     cout << pQuickTime << " microseconds ";
     auto pQuickSortStatus = PracticeQuickSortObj.isAscending();
     PracticeCheckStatus(pQuickSortStatus, pQuickTime);
-
-    fflush(stdout);
 
     cout << "Practice Heap Sort: ";
     Benchmark HeapSortTestObj(practiceHeapSort, randArray);
@@ -219,43 +164,6 @@ void PracticeCheckStatus(bool testResult, int time)
     {
         checkStatus(testResult);
     }
-
-    return;
-}
-
-/************************************************************
- * @brief Prints the array with an unsorted heading
- ***********************************************************/
-void printUnsortedArray(vector<int> &arr)
-{
-    cout << "Unsorted Array: ";
-    printArray(arr);
-    cout << endl;
-
-    return;
-}
-
-/************************************************************
- * @brief Prints the array with a Sorted heading
- ***********************************************************/
-void printSortedArray(vector<int> &arr)
-{
-    cout << "Sorted Array: ";
-    printArray(arr);
-    cout << endl;
-
-    return;
-}
-
-/************************************************************
- * @brief Prints the array
- ***********************************************************/
-void printArray(vector<int> &arr)
-{
-    cout << "[ ";
-    for (int i : arr)
-        cout << i << " ";
-    cout << "]";
 
     return;
 }

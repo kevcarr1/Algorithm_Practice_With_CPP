@@ -39,11 +39,6 @@ void practiceInsertionSort(vector<int> &arr)
     return;
 }
 
-static void pMergeSort(vector<int> &arr, int left, int right)
-{
-    return;
-}
-
 /*******************************************************
  *  @brief Practice Merge Sort in this function
  *

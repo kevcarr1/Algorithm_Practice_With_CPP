@@ -6,6 +6,7 @@
 
 using namespace std;
 
+#if 0 /* UNUSED, good example */
 void hashmap_example(void)
 {
     vector<string> names = {"Alice", "Bob", "Charlie", "Diana", "Kevin"};
@@ -35,6 +36,7 @@ void hashmap_example(void)
 
     return;
 }
+#endif
 
 User findUser_hashmap(vector<User> &userList, string name)
 {
