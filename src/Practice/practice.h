@@ -13,4 +13,6 @@ void practiceQuickSort(vector<int> &arr);
 void practiceHeapSort(vector<int> &arr);
 void practiceTimSort(vector<int> &arr);
 
+void practiceSortingAlgorithms(int length);
+
 #endif

@@ -10,6 +10,7 @@ cc_library(
         "GenUsers.h"
         ],
     visibility = ["//src:__pkg__",
-                  "//src/Benchmarking:__pkg__", 
+                  "//src/Benchmarking:__pkg__",
+                  "//src/Practice:__pkg__", 
                   "//src/SearchingAlgorithms:__pkg__"],
 )

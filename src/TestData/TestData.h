@@ -10,5 +10,6 @@ using namespace std;
 vector<int> generateRandomIntArray(int length, int min, int max);
 bool checkIntsAscending(vector<int> &arr);
 void checkStatus(bool status);
+void PracticeCheckStatus(bool testResult, int time);
 
 #endif

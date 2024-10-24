@@ -2,40 +2,15 @@
 #include "GenUsers.h"
 
 using namespace std;
-static int numUsers = 0;
 
-User **users;
-
-User **createUsers(int n)
+void createUsers(vector<User> &users)
 {
     int mysteryPlacement;
+    int size = users.size();
 
-    numUsers = n;
-    mysteryPlacement = rand() % numUsers;
+    mysteryPlacement = rand() % size;
 
-    users = new User *[numUsers];
-    for (int i = 0; i < numUsers; ++i)
-    {
-        if (i == mysteryPlacement)
-        {
-            users[i] = new User("Waldo", "Emerson");
-        }
-        else
-        {
-            users[i] = new User();
-        }
-    }
-
-    return users;
-}
-
-void createUsers2(vector<User> &users, int numUsers2)
-{
-    int mysteryPlacement;
-
-    mysteryPlacement = rand() % numUsers;
-
-    for (int i = 0; i < numUsers2; i++)
+    for (int i = 0; i < size; i++)
     {
         if (i == mysteryPlacement)
         {
@@ -51,16 +26,17 @@ void createUsers2(vector<User> &users, int numUsers2)
     return;
 }
 
-void displayUsers(void)
+void displayUsers(vector<User> &userList)
 {
     int j = 0;
     string name;
+    int size = userList.size();
 
-    for (int i = 0; i < numUsers; ++i)
+    for (int i = 0; i < size; ++i)
     {
-        name = users[i]->getFullName();
+        name = userList[i].getFullName();
 
-        if (i < numUsers - 1)
+        if (i < size - 1)
         {
             cout << name;
 
@@ -92,21 +68,4 @@ void displayUsers(void)
     }
 
     return;
-}
-
-void deleteUsers(void)
-{
-    for (int i = 0; i < numUsers; i++)
-    {
-        delete users[i];
-    }
-
-    delete[] users;
-
-    return;
-}
-
-int getNumUsers(void)
-{
-    return numUsers;
 }

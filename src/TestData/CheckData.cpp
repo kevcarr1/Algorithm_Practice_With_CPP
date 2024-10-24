@@ -35,3 +35,17 @@ void checkStatus(bool status)
 
     return;
 }
+
+void PracticeCheckStatus(bool testResult, int time)
+{
+    if (testResult == false && time <= 1)
+    {
+        cout << "[NO IMPLEMENTATION]" << endl;
+    }
+    else
+    {
+        checkStatus(testResult);
+    }
+
+    return;
+}

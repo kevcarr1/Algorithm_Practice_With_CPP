@@ -1,15 +1,15 @@
 #include <string>
 #include "../TestData/GenUsers.h"
 
-int findUserByName_LinearSearch(string name, User *list[])
+int findUserByName_LinearSearch(string name, vector<User> &userList)
 {
     int i = 0;
     bool nameFound = false;
-    int numUsers = getNumUsers();
+    int numUsers = userList.size();
 
     while (i < numUsers && nameFound == false)
     {
-        if (list[i]->getFullName() == name)
+        if (userList[i].getFullName() == name)
         {
             nameFound = true;
         }

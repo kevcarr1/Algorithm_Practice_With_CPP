@@ -62,10 +62,8 @@ public:
 
 // Function Prototypes
 
-User **createUsers(int n);
-void createUsers2(vector<User> &users, int numUsers);
-void displayUsers(void);
-void deleteUsers(void);
-int getNumUsers(void);
+void createUsers(vector<User> &users);
+void createUsers2(vector<User> &users);
+void displayUsers(vector<User> &userList);
 
 #endif

@@ -7,7 +7,7 @@
 using namespace std;
 using namespace std::chrono;
 
-class Benchmark
+class SortingBenchmark
 {
 private:
     void (*funcPtr)(vector<int> &arr);
@@ -25,7 +25,7 @@ private:
     }
 
 public:
-    Benchmark(void (*func)(vector<int> &arr), const vector<int> &arr)
+    SortingBenchmark(void (*func)(vector<int> &arr), const vector<int> &arr)
     {
         funcPtr = func;
         arrayOfInts = arr;
@@ -35,7 +35,7 @@ public:
         return;
     }
 
-    Benchmark(void (*func)(vector<int> &arr))
+    SortingBenchmark(void (*func)(vector<int> &arr))
     {
         funcPtr = func;
     }
@@ -79,6 +79,7 @@ public:
 };
 
 // FUNCTION PROTOTYPES
+void benchmarkSearchingAlgorithms(int length);
 void benchmarkingSortingAlgorithms(int length);
 
 #endif
