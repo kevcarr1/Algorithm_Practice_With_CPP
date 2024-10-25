@@ -8,6 +8,7 @@ cc_binary(
         "//src/Benchmarking:Benchmark",
         "//src/SearchingAlgorithms:SearchingAlgorithms",
     ],
+    copts = ["-g"]
 )
 
 cc_binary(

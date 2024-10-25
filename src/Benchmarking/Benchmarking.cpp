@@ -17,7 +17,9 @@ void benchmarkingSortingAlgorithms(int length)
     vector<int> randArray = generateRandomIntArray(length, min, max);
 
     SortingBenchmark BubbleSortObj(bubbleSort, randArray);
+    SortingBenchmark BubbleSortDescObj(bubbleSortDesc, randArray);
     SortingBenchmark InsertionSortObj(insertionSort, randArray);
+    SortingBenchmark InsertionSortDescObj(insertionSortDesc, randArray);
     SortingBenchmark SelectionSortObj(selectionSort, randArray);
     SortingBenchmark MergeSortObj(mergeSort, randArray);
     SortingBenchmark QuickSortObj(quickSort, randArray);
@@ -26,10 +28,15 @@ void benchmarkingSortingAlgorithms(int length)
 
     cout << "     Benchmark Summary:     " << endl;
     cout << "============================" << endl;
-    cout << "Bubble Sort Time: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Bubble Sort [Ascending]  Time: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(BubbleSortObj.isAscending());
-    cout << "Insertion Sort Time: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Bubble Sort [Descending] Time: " << BubbleSortDescObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(BubbleSortDescObj.isDescending());
+    fflush(stdout);
+    cout << "Insertion Sort [Ascending]  Time: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(InsertionSortObj.isAscending());
+    cout << "Insertion Sort [Descending] Time: " << InsertionSortDescObj.getTimeToCalcMs() << " microseconds ";
+    checkStatus(InsertionSortDescObj.isDescending());
     cout << "Selection Sort Time: " << SelectionSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(SelectionSortObj.isAscending());
     cout << "Merge Sort Time: " << MergeSortObj.getTimeToCalcMs() << " microseconds ";
