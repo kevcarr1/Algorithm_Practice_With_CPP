@@ -74,9 +74,20 @@ void benchmarkSearchingAlgorithms(int length)
     cout << "Reseting foundUser Var: " << foundUser.getFullName() << endl;
 #endif
 
-    // Searching using hashmap
+    // Searching using hashmap TODO: Creation of hashmap currently included as part of benchmark, remove
+    cout << "Searching using Hashing Search:" << endl;
     SearchingBenchmark hashmapSearch = SearchingBenchmark(findUser_hashmap, userList, userToSearch);
     hashmapSearch.getStats();
+
+    vector<User> userListSorted = userList;
+
+    sortUsers(userListSorted);
+
+    displayUsers(userListSorted);
+
+    cout << "Searching using Binary Search:" << endl;
+    SearchingBenchmark binarySearch = SearchingBenchmark(findUser_BinarySearch, userListSorted, userToSearch);
+    binarySearch.getStats();
 
     return;
 }

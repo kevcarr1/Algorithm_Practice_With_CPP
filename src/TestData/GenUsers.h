@@ -23,6 +23,7 @@ class User
 private:
     string firstName;
     string lastName;
+    string fullName;
     int uniqueID;
 
 public:
@@ -33,20 +34,35 @@ public:
 
         firstName = firstNames[firstNameIdx];
         lastName = lastNames[lastNameIdx];
+        fullName = firstName + " " + lastName;
 
         uniqueID = rand() % 100000;
     }
 
     User(const string first, const string last) : firstName(first), lastName(last)
     {
+        fullName = firstName + " " + lastName;
         uniqueID = rand() % 100000;
     }
 
-    User(const string first, const string last, int id) : firstName{first}, lastName{last}, uniqueID{id} {}
+    User(const string first, const string last, int id) : firstName{first}, lastName{last}, uniqueID{id}
+    {
+        fullName = firstName + " " + lastName;
+    }
 
     string getFullName(void)
     {
-        return firstName + " " + lastName;
+        return fullName;
+    }
+
+    string getFirstName(void)
+    {
+        return firstName;
+    }
+
+    string getLastName(void)
+    {
+        return lastName;
     }
 
     int getUniqueID(void)
@@ -57,6 +73,59 @@ public:
     bool operator==(const User &other) const
     {
         return firstName == other.firstName && lastName == other.lastName;
+    }
+
+    bool operator==(const string name) const
+    {
+        return fullName == name;
+    }
+
+    bool operator<(const User &other) const
+    {
+        bool lessThan = false;
+
+        if (fullName < other.fullName)
+        {
+            lessThan = true;
+        }
+
+        return lessThan;
+    }
+
+    bool operator<(const string name) const
+    {
+        bool lessThan = false;
+
+        if (fullName < name)
+        {
+            lessThan = true;
+        }
+
+        return lessThan;
+    }
+
+    bool operator>(const User &other) const
+    {
+        bool greaterThan = false;
+
+        if (fullName > other.fullName)
+        {
+            greaterThan = true;
+        }
+
+        return greaterThan;
+    }
+
+    bool operator>(const string name) const
+    {
+        bool greaterThan = false;
+
+        if (fullName < name)
+        {
+            greaterThan = true;
+        }
+
+        return greaterThan;
     }
 };
 

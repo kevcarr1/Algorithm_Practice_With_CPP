@@ -10,6 +10,7 @@ cc_library(
         "TimSort.cpp"
     ],
     hdrs = ["Sorting.h"],
+    deps = ["//src/TestData:TestData"],
     visibility = ["//src:__pkg__",
                   "//src/Benchmarking:__pkg__"],
 )

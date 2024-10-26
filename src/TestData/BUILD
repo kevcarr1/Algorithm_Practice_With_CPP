@@ -12,5 +12,6 @@ cc_library(
     visibility = ["//src:__pkg__",
                   "//src/Benchmarking:__pkg__",
                   "//src/Practice:__pkg__", 
-                  "//src/SearchingAlgorithms:__pkg__"],
+                  "//src/SearchingAlgorithms:__pkg__",
+                  "//src/SortingAlgorithms:__pkg__"],
 )

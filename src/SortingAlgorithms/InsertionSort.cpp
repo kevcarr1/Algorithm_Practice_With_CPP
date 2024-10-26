@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "../TestData/GenUsers.h"
 
 using namespace std;
 
@@ -46,25 +47,46 @@ void insertionSort(vector<int> &arr)
     return;
 }
 
-
 void insertionSortDesc(vector<int> &arr)
 {
     int n = arr.size();
     int key, j;
 
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         key = arr[i];
         j = i - 1;
 
         while (j >= 0 && arr[j] < key)
         {
-            arr[j+1] = arr[j];
+            arr[j + 1] = arr[j];
             j = j - 1;
         }
 
-        key = arr[j+1];
+        key = arr[j + 1];
     }
 
+    return;
+}
+
+void sortUsers(vector<User> &userList)
+{
+    int size = userList.size();
+    User key;
+    int j;
+
+    for (int i = 0; i < size; i++)
+    {
+        key = userList[i];
+        j = i - 1;
+
+        while (j >= 0 && userList[j] > key)
+        {
+            userList[j + 1] = userList[j];
+            j = j - 1;
+        }
+
+        userList[j + 1] = key;
+    }
     return;
 }
