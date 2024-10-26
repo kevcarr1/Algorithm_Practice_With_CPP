@@ -42,7 +42,7 @@ User findUser_hashmap(vector<User> &userList, string name)
 {
     unordered_map<string, User> hashedUsers;
     int size = userList.size();
-    User dummy = User("Dummy", "Name");
+    User foundUser;
 
     for (int i = 0; i < size; i++)
     {
@@ -53,12 +53,12 @@ User findUser_hashmap(vector<User> &userList, string name)
 
     if (it != hashedUsers.end())
     {
-        cout << "Found: " << it->second.getFullName() << endl;
-        return it->second;
+        foundUser = it->second;
     }
     else
     {
-        cout << "Didn't find name";
-        return dummy;
+        foundUser = User("Dummy", "Name");
     }
+
+    return foundUser;
 }

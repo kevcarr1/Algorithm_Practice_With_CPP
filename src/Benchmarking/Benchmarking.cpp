@@ -56,36 +56,27 @@ void benchmarkingSortingAlgorithms(int length)
  ***********************************************************/
 void benchmarkSearchingAlgorithms(int length)
 {
-    int timeToCalcMs = 0;
     // Create and Display User List
+    string userToSearch = "Waldo Emerson";
     vector<User> userList(length);
+    User foundUser;
+
     createUsers(userList);
     // displayUsers(userList);
 
     // Search using Linear Search
     cout << "Searching using Linear Search:" << endl;
-    auto start = high_resolution_clock::now();
-    int k = findUserByName_LinearSearch("Waldo Emerson", userList);
-    auto stop = high_resolution_clock::now();
-    auto time = duration_cast<microseconds>(stop - start);
-    timeToCalcMs = time.count();
+    SearchingBenchmark linearSearch = SearchingBenchmark(findUserByName_LinearSearch, userList, userToSearch);
+    linearSearch.getStats();
 
-    cout << "Found: " << userList[k].getFullName() << " at position " << k << " in " << timeToCalcMs << " microseconds" << endl;
-
-    cout << "Searching new table for Waldo Emerson" << endl;
+#if 0 /* Sanity check to ensure next search does not return the user found by the first search */
+    foundUser = User("Dummy", "Name");
+    cout << "Reseting foundUser Var: " << foundUser.getFullName() << endl;
+#endif
 
     // Searching using hashmap
-    // TODO: implement benchmarking for search algorithms
-    User foundUser;
-    // displayUsers(userList);
-
-    start = high_resolution_clock::now();
-    foundUser = findUser_hashmap(userList, "Waldo Emerson");
-    stop = high_resolution_clock::now();
-    time = duration_cast<microseconds>(stop - start);
-    timeToCalcMs = time.count();
-
-    cout << "FoundUser ID: " << foundUser.getUniqueID() << " in " << timeToCalcMs << " microseconds" << endl;
+    SearchingBenchmark hashmapSearch = SearchingBenchmark(findUser_hashmap, userList, userToSearch);
+    hashmapSearch.getStats();
 
     return;
 }

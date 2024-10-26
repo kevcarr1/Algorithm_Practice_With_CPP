@@ -1,8 +1,9 @@
 #ifndef BENCHMARK_H
 #define BENCHMARK_H
 
-#include <vector>
 #include <chrono>
+#include <vector>
+#include "../TestData/GenUsers.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -75,6 +76,57 @@ public:
         }
 
         return ordered;
+    }
+};
+
+class SearchingBenchmark
+{
+private:
+    User (*funcPtr)(vector<User> &list, string name);
+    vector<User> arrayOfUsers;
+    int timeToCalcMs = 0;
+    string nameToSearch;
+    User foundUser;
+
+    void calcTimeMs(void)
+    {
+        auto start = high_resolution_clock::now();
+        foundUser = funcPtr(arrayOfUsers, nameToSearch);
+        auto stop = high_resolution_clock::now();
+        auto time = duration_cast<microseconds>(stop - start);
+
+        timeToCalcMs = time.count();
+    }
+
+public:
+    SearchingBenchmark(User (*func)(vector<User> &list, string name), const vector<User> &list, string name)
+    {
+        funcPtr = func;
+        arrayOfUsers = list;
+        nameToSearch = name;
+
+        calcTimeMs();
+
+        return;
+    }
+
+    int getTimeToCalcMs(void)
+    {
+        return timeToCalcMs;
+    }
+
+    void getStats(void)
+    {
+        if (foundUser.getUniqueID() != 39212)
+        {
+            cout << "User was not found. Search complete in " << timeToCalcMs << " microseconds" << endl;
+        }
+        else
+        {
+            cout << "Found " << foundUser.getFullName() << " with User ID: " << foundUser.getUniqueID() << " in " << timeToCalcMs << " microseconds" << endl;
+        }
+
+        return;
     }
 };
 

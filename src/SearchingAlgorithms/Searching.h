@@ -3,7 +3,7 @@
 #include <string>
 #include "../TestData/GenUsers.h"
 
-int findUserByName_LinearSearch(string name, vector<User> &userList);
+User findUserByName_LinearSearch(vector<User> &userList, string name);
 User findUser_hashmap(vector<User> &userList, string name);
 
 #if 0 /* UNUSED */

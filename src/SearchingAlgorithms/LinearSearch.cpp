@@ -1,11 +1,12 @@
 #include <string>
 #include "../TestData/GenUsers.h"
 
-int findUserByName_LinearSearch(string name, vector<User> &userList)
+User findUserByName_LinearSearch(vector<User> &userList, string name)
 {
     int i = 0;
     bool nameFound = false;
     int numUsers = userList.size();
+    User foundUser;
 
     while (i < numUsers && nameFound == false)
     {
@@ -19,5 +20,14 @@ int findUserByName_LinearSearch(string name, vector<User> &userList)
         }
     }
 
-    return i;
+    if (nameFound == true)
+    {
+        foundUser = userList[i];
+    }
+    else
+    {
+        foundUser = User("Dummy", "Name");
+    }
+
+    return foundUser;
 }
