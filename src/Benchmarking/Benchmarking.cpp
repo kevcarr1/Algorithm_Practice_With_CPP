@@ -28,18 +28,21 @@ void benchmarkingSortingAlgorithms(int length)
 
     cout << "     Benchmark Summary:     " << endl;
     cout << "============================" << endl;
-    cout << "Bubble Sort [Ascending]  Time: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << " Sorting integers: " << endl;
+    cout << "-------------------" << endl;
+
+    cout << "Bubble Sort\t[Ascending]\tTime: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(BubbleSortObj.isAscending());
-    cout << "Bubble Sort [Descending] Time: " << BubbleSortDescObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Bubble Sort\t[Descending]\tTime: " << BubbleSortDescObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(BubbleSortDescObj.isDescending());
     fflush(stdout);
-    cout << "Insertion Sort [Ascending]  Time: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Insertion Sort\t[Ascending]\tTime: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(InsertionSortObj.isAscending());
-    cout << "Insertion Sort [Descending] Time: " << InsertionSortDescObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Insertion Sort\t[Descending]\tTime: " << InsertionSortDescObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(InsertionSortDescObj.isDescending());
-    cout << "Selection Sort Time: " << SelectionSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Selection Sort\t\t\tTime: " << SelectionSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(SelectionSortObj.isAscending());
-    cout << "Merge Sort Time: " << MergeSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Merge Sort\t\t\t\tTime: " << MergeSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(MergeSortObj.isAscending());
     cout << "Quick Sort Time: " << QuickSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(QuickSortObj.isAscending());
@@ -47,6 +50,12 @@ void benchmarkingSortingAlgorithms(int length)
     checkStatus(HeapSortObj.isAscending());
     cout << "Tim Sort Time: " << TimSortObj.getTimeToCalcMs() << " microseconds ";
     checkStatus(TimSortObj.isAscending());
+
+    /*
+        cout << endl;
+        cout << "Sorting Users:" << endl;
+        cout << "--------------" << endl;
+        */
 
     return;
 }

@@ -32,6 +32,8 @@ void displayUsers(vector<User> &userList)
     string name;
     int size = userList.size();
 
+    cout << "Users: " << endl;
+
     for (int i = 0; i < size; ++i)
     {
         name = userList[i].getFullName();
@@ -66,6 +68,8 @@ void displayUsers(vector<User> &userList)
             j++;
         }
     }
+
+    cout << endl;
 
     return;
 }
