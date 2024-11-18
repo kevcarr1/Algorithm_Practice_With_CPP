@@ -28,6 +28,9 @@ private:
 public:
     SortingBenchmark(void (*func)(vector<int> &arr), const vector<int> &arr)
     {
+        int size = arr.size();
+
+        arrayOfInts.reserve(size);
         funcPtr = func;
         arrayOfInts = arr;
 

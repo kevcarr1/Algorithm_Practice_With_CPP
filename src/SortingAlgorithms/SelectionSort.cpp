@@ -41,3 +41,26 @@ void selectionSort(vector<int> &arr)
 
     return;
 }
+
+void SelectionSortDescending(vector<int> &arr)
+{
+    int size = arr.size();
+    int maxIdx;
+
+    for (int i = 0; i < size; i++)
+    {
+        maxIdx = i;
+
+        for (int j = i + 1; j < size; j++)
+        {
+            if (arr[j] > arr[maxIdx])
+            {
+                maxIdx = j;
+            }
+        }
+
+        swap(arr[i], arr[maxIdx]);
+    }
+
+    return;
+}

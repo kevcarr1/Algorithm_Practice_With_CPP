@@ -11,6 +11,7 @@ void bubbleSortDesc(vector<int> &arr);
 void insertionSort(vector<int> &arr);
 void insertionSortDesc(vector<int> &arr);
 void selectionSort(vector<int> &arr);
+void SelectionSortDescending(vector<int> &arr);
 void mergeSort(vector<int> &arr);
 void quickSort(vector<int> &arr);
 void heapSort(vector<int> &arr);

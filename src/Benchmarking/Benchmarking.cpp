@@ -21,6 +21,7 @@ void benchmarkingSortingAlgorithms(int length)
     SortingBenchmark InsertionSortObj(insertionSort, randArray);
     SortingBenchmark InsertionSortDescObj(insertionSortDesc, randArray);
     SortingBenchmark SelectionSortObj(selectionSort, randArray);
+    SortingBenchmark SelectionSortDescObj(SelectionSortDescending, randArray);
     SortingBenchmark MergeSortObj(mergeSort, randArray);
     SortingBenchmark QuickSortObj(quickSort, randArray);
     SortingBenchmark HeapSortObj(heapSort, randArray);
@@ -31,24 +32,26 @@ void benchmarkingSortingAlgorithms(int length)
     cout << " Sorting integers: " << endl;
     cout << "-------------------" << endl;
 
-    cout << "Bubble Sort\t[Ascending]\tTime: " << BubbleSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Bubble Sort\t[Ascending]\tTime: " << BubbleSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(BubbleSortObj.isAscending());
-    cout << "Bubble Sort\t[Descending]\tTime: " << BubbleSortDescObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Bubble Sort\t[Descending]\tTime: " << BubbleSortDescObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(BubbleSortDescObj.isDescending());
     fflush(stdout);
-    cout << "Insertion Sort\t[Ascending]\tTime: " << InsertionSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Insertion Sort\t[Ascending]\tTime: " << InsertionSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(InsertionSortObj.isAscending());
-    cout << "Insertion Sort\t[Descending]\tTime: " << InsertionSortDescObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Insertion Sort\t[Descending]\tTime: " << InsertionSortDescObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(InsertionSortDescObj.isDescending());
-    cout << "Selection Sort\t\t\tTime: " << SelectionSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Selection Sort\t[Ascending]\tTime: " << SelectionSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(SelectionSortObj.isAscending());
-    cout << "Merge Sort\t\t\t\tTime: " << MergeSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Selection Sort\t[Descending]\tTime: " << SelectionSortDescObj.getTimeToCalcMs() << " microseconds\t";
+    checkStatus(SelectionSortDescObj.isDescending());
+    cout << "Merge Sort\t[Ascending]\tTime: " << MergeSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(MergeSortObj.isAscending());
-    cout << "Quick Sort Time: " << QuickSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Quick Sort\t[Ascending]\tTime: " << QuickSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(QuickSortObj.isAscending());
-    cout << "Heap Sort Time: " << HeapSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Heap Sort\t[Ascending]\tTime: " << HeapSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(HeapSortObj.isAscending());
-    cout << "Tim Sort Time: " << TimSortObj.getTimeToCalcMs() << " microseconds ";
+    cout << "Tim Sort\t[Ascending]\tTime: " << TimSortObj.getTimeToCalcMs() << " microseconds\t";
     checkStatus(TimSortObj.isAscending());
 
     /*
