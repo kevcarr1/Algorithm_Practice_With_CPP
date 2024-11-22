@@ -8,6 +8,8 @@
 #include "Practice/practice.h"
 #include "TestData/GenUsers.h"
 #include "SearchingAlgorithms/Searching.h"
+#include "utils/utils.h"
+#include "GeneralAlgorithms/GeneralAlgorithms.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -29,6 +31,7 @@ int main()
     cout << "What would you like to do?" << endl;
     cout << "1 - Array Sorting" << endl;
     cout << "2 - Searching Examples" << endl;
+    cout << "3 - Remove duplicates" << endl;
     cout << "Choice: ";
     cin >> choice;
 
@@ -53,6 +56,27 @@ int main()
         cin >> numUsers;
 
         benchmarkSearchingAlgorithms(numUsers);
+    }
+    else if (choice == 3)
+    {
+        cout << endl;
+        cout << "Remove Duplicates From Array" << endl;
+        cout << "How large do you want to make your array? ";
+        cin >> length;
+
+        int min = 0;
+        int max = 100;
+
+        vector<int> randArray = generateRandomIntArray(length, min, max);
+
+        cout << "Initial Array:" << endl;
+        printArray(randArray);
+        cout << endl;
+
+        removeDuplicates(randArray);
+        cout << "Unique Array" << endl;
+        printArray(randArray);
+        cout << endl;
     }
     else
     {

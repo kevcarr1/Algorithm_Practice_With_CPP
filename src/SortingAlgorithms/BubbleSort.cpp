@@ -36,12 +36,13 @@ void bubbleSort(vector<int> &arr)
 void bubbleSortDesc(vector<int> &arr)
 {
     int n = arr.size() - 1;
-    for (int i = 0; i < n; ++i)
+
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n - i; ++j)
+        for (int j = 0; j < n; j++)
         {
-            if (arr[j] < arr[j + 1])
-            { // Compare and swap if out of order
+            if (arr[j + 1] > arr[j])
+            {
                 swap(arr[j], arr[j + 1]);
             }
         }

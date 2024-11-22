@@ -7,6 +7,8 @@ cc_binary(
         "//src/Practice:Practice",
         "//src/Benchmarking:Benchmark",
         "//src/SearchingAlgorithms:SearchingAlgorithms",
+        "//src/GeneralAlgorithms:GeneralAlgorithms",
+        "//src/utils:Utils",
     ],
     copts = ["-g"]
 )
@@ -20,6 +22,7 @@ cc_binary(
         "//src/Practice:Practice",
         "//src/Benchmarking:Benchmark",
         "//src/SearchingAlgorithms:SearchingAlgorithms",
+        "//src/GeneralAlgorithms:GeneralAlgorithms",
     ],
     copts = ["-fsanitize=address"],
     linkopts = ["-fsanitize=address"],
