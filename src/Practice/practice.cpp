@@ -67,3 +67,21 @@ void practiceSortingAlgorithms(int length)
 
     return;
 }
+
+void practiceSearchingAlgorithms(int numUsers)
+{
+    string userToSearch = "Waldo Emerson";
+    vector<User> userList(numUsers);
+    User foundUser;
+
+    // Create User random list and name to search.
+    cout << "Practice Linear Search: ";
+    SearchingBenchmark linearSearchPractice = SearchingBenchmark(findUser_LinearSearchPractice, userList, userToSearch);
+    linearSearchPractice.getStats();
+
+    cout << "Practice HashMap Search: ";
+    SearchingBenchmark hashmapSearchPractice = SearchingBenchmark(findUser_HashMapPractice, userList, userToSearch);
+    hashmapSearchPractice.getStats();
+
+    return;
+}

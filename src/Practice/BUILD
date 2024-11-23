@@ -1,7 +1,10 @@
 cc_library(
     name = "Practice",
-    srcs = ["practice.cpp",
-            "practiceSorts.cpp"],
+    srcs = [
+        "practice.cpp",
+        "practiceSorts.cpp",
+        "practiceSearch.cpp",
+    ],
     hdrs = ["practice.h"],
     deps = ["//src/Benchmarking:Benchmark",
             "//src/TestData:TestData"],

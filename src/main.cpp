@@ -56,6 +56,10 @@ int main()
         cin >> numUsers;
 
         benchmarkSearchingAlgorithms(numUsers);
+        cout << endl;
+
+        cout << "Practice Search Algorithms:" << endl;
+        practiceSearchingAlgorithms(numUsers);
     }
     else if (choice == 3)
     {
