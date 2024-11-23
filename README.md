@@ -1,6 +1,18 @@
 # CPP-Learning_Algorithms
 
-A learning repository where commits on the main branch are tagged with the newly introduced algorithm. Previous commits should have a starter function.
+This repository contains a collection of algorithmic problems solved in C++, aimed at deepening my understanding of the language. It explores various data structures and algorithms, leveraging both C++'s native features and algorithms with more generic implementations. Empty practice functions are available with checks for valid implementation.
+
+### Currently implemented algorithms
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Heap Sort
+- Tim Sort
+- Linear Search
+- Hashmap Search
+- Deduplication of Array Elements
 
 ## Building the Codebase
 
