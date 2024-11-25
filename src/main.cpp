@@ -16,6 +16,24 @@ using namespace std::chrono;
 
 static void printLearningAlgos(void);
 
+bool checkUnique(vector<int> &arr)
+{
+    int size = arr.size();
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i; j < size; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 int main()
 {
     int length = 10;
@@ -67,20 +85,48 @@ int main()
         cout << "Remove Duplicates From Array" << endl;
         cout << "How large do you want to make your array? ";
         cin >> length;
+        cout << endl;
 
         int min = 0;
         int max = 100;
 
         vector<int> randArray = generateRandomIntArray(length, min, max);
 
-        cout << "Initial Array:" << endl;
+        cout << "Deduplication with C++ Native Features" << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "Initial Array:";
         printArray(randArray);
         cout << endl;
 
+        auto start = high_resolution_clock::now();
         removeDuplicates(randArray);
-        cout << "Unique Array" << endl;
+        auto stop = high_resolution_clock::now();
+        auto time = duration_cast<microseconds>(stop - start);
+        cout << "Unique Array: ";
         printArray(randArray);
         cout << endl;
+        cout << "Time to execute: " << time.count() << " microseconds" << endl;
+
+        vector<int> randArrayPractice = generateRandomIntArray(length, min, max);
+
+        cout << endl;
+        cout << "Practice" << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "Deduplication Algorithm #1" << endl;
+        start = high_resolution_clock::now();
+        removeDuplicatesPractice(randArray);
+        stop = high_resolution_clock::now();
+        time = duration_cast<microseconds>(stop - start);
+        cout << "Time to execute: " << time.count() << " microseconds" << endl;
+        bool isUnique = checkUnique(randArray);
+        if (isUnique)
+        {
+            cout << "[PASS]" << endl;
+        }
+        else
+        {
+            cout << "[FAIL]" << endl;
+        }
     }
     else
     {

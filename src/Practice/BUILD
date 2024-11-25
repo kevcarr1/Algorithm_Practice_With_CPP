@@ -2,6 +2,7 @@ cc_library(
     name = "Practice",
     srcs = [
         "practice.cpp",
+        "practiceGenAlgos.cpp",
         "practiceSorts.cpp",
         "practiceSearch.cpp",
     ],

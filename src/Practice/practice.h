@@ -13,11 +13,12 @@ void practiceMergeSort(vector<int> &arr);
 void practiceQuickSort(vector<int> &arr);
 void practiceHeapSort(vector<int> &arr);
 void practiceTimSort(vector<int> &arr);
+void practiceSortingAlgorithms(int length);
 
 User findUser_LinearSearchPractice(vector<User> &userList, string name);
 User findUser_HashMapPractice(vector<User> &userList, string name);
-
-void practiceSortingAlgorithms(int length);
 void practiceSearchingAlgorithms(int numUsers);
+
+void removeDuplicatesPractice(vector<int> &arr);
 
 #endif
