@@ -50,6 +50,7 @@ int main()
     cout << "1 - Array Sorting" << endl;
     cout << "2 - Searching Examples" << endl;
     cout << "3 - Remove duplicates" << endl;
+    cout << "4 - Sliding Window" << endl;
     cout << "Choice: ";
     cin >> choice;
 
@@ -127,6 +128,28 @@ int main()
         {
             cout << "[FAIL]" << endl;
         }
+    }
+    else if (choice == 4)
+    {
+        int len;
+        cout << "Sliding Window Algorithm:" << endl;
+        cout << "=========================" << endl;
+        cout << "How long of an array do you want: ";
+        cin >> len;
+        cout << endl;
+
+        int min = 0;
+        int max = 100;
+        vector<int> randArray = generateRandomIntArray(len, min, max);
+
+        int start;
+
+        printArray(randArray);
+
+        start = maxSlidingWindow(randArray, 3);
+
+        cout << endl;
+        cout << "Start index is: " << start << endl;
     }
     else
     {

@@ -6,5 +6,6 @@
 using namespace std;
 
 void removeDuplicates(vector<int> &arr);
+int maxSlidingWindow(const vector<int> &arr, int k);
 
 #endif
