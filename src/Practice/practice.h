@@ -20,5 +20,6 @@ User findUser_HashMapPractice(vector<User> &userList, string name);
 void practiceSearchingAlgorithms(int numUsers);
 
 void removeDuplicatesPractice(vector<int> &arr);
+int maxSlidingWindowPractice(vector<int> &arr, int k);
 
 #endif

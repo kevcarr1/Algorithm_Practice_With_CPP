@@ -132,6 +132,9 @@ int main()
     else if (choice == 4)
     {
         int len;
+        int windowSize;
+        cout << endl;
+        cout << "=========================" << endl;
         cout << "Sliding Window Algorithm:" << endl;
         cout << "=========================" << endl;
         cout << "How long of an array do you want: ";
@@ -142,14 +145,55 @@ int main()
         int max = 100;
         vector<int> randArray = generateRandomIntArray(len, min, max);
 
-        int start;
+        int start = 0;
 
         printArray(randArray);
 
-        start = maxSlidingWindow(randArray, 3);
+        do
+        {
+            cout << endl;
+            cout << "Array size is " << len << endl;
+            cout << "How large do you want the window to be: ";
+            cin >> windowSize;
+            cout << endl;
+
+            start = maxSlidingWindow(randArray, windowSize);
+        } while (start == -1);
 
         cout << endl;
         cout << "Start index is: " << start << endl;
+
+        cout << "[ ";
+
+        int n = randArray.size();
+
+        for (int i = 0; i < n; i++)
+        {
+            if (i == start)
+                cout << "[[";
+
+            cout << randArray[i];
+
+            if (i == start)
+                cout << "]]";
+
+            cout << " ";
+        }
+        cout << "]" << endl;
+
+        int practiceStart;
+
+        practiceStart = maxSlidingWindowPractice(randArray, windowSize);
+
+        cout << "Practice implementation: ";
+        if (practiceStart == start)
+        {
+            cout << "[PASS]" << endl;
+        }
+        else
+        {
+            cout << "[FAIL]" << endl;
+        }
     }
     else
     {

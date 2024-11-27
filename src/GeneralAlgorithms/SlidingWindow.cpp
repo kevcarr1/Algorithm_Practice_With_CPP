@@ -9,7 +9,9 @@ int maxSlidingWindow(const vector<int> &arr, int k)
 
     if (size < k)
     {
-        throw invalid_argument("Array size is less than window size");
+        cout << "==============================================" << endl;
+        cout << "ERROR: Array size is less than the window size." << endl;
+        return -1;
     }
 
     int maxSum = 0;
