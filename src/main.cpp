@@ -2,6 +2,8 @@
 #include <chrono>
 #include <cstdlib>
 #include <ctime>
+#include <map>
+#include <string>
 #include "TestData/TestData.h"
 #include "Benchmarking/Benchmark.h"
 #include "SortingAlgorithms/Sorting.h"
@@ -10,11 +12,19 @@
 #include "SearchingAlgorithms/Searching.h"
 #include "utils/utils.h"
 #include "GeneralAlgorithms/GeneralAlgorithms.h"
+#include "Stats/Stats.h"
 
 using namespace std;
 using namespace std::chrono;
 
 static void printLearningAlgos(void);
+
+static string statsFilePath()
+{
+    const char* home = getenv("HOME");
+    if (home) return string(home) + "/.algorithm_practice_stats.json";
+    return "./algorithm_practice_stats.json";
+}
 
 bool checkUnique(vector<int> &arr)
 {
@@ -42,6 +52,9 @@ int main()
     // Seed the random number generator with the current time.
     srand(time(0));
 
+    Stats stats;
+    stats.load(statsFilePath());
+
     // Introduction
     cout << endl;
     cout << "Welcome to Learning Algorithms with CPP!" << endl;
@@ -64,7 +77,10 @@ int main()
 
         cout << endl;
 
-        practiceSortingAlgorithms(length);
+        map<string, bool> results = practiceSortingAlgorithms(length);
+        for (auto& [algo, passed] : results) {
+            stats.recordResult(algo, passed);
+        }
     }
     else if (choice == 2)
     {
@@ -78,7 +94,10 @@ int main()
         cout << endl;
 
         cout << "Practice Search Algorithms:" << endl;
-        practiceSearchingAlgorithms(numUsers);
+        map<string, bool> results = practiceSearchingAlgorithms(numUsers);
+        for (auto& [algo, passed] : results) {
+            stats.recordResult(algo, passed);
+        }
     }
     else if (choice == 3)
     {
@@ -128,6 +147,7 @@ int main()
         {
             cout << "[FAIL]" << endl;
         }
+        stats.recordResult("RemoveDuplicates", isUnique);
     }
     else if (choice == 4)
     {
@@ -185,8 +205,9 @@ int main()
 
         practiceStart = maxSlidingWindowPractice(randArray, windowSize);
 
+        bool swPassed = (practiceStart == start);
         cout << "Practice implementation: ";
-        if (practiceStart == start)
+        if (swPassed)
         {
             cout << "[PASS]" << endl;
         }
@@ -194,11 +215,18 @@ int main()
         {
             cout << "[FAIL]" << endl;
         }
+        stats.recordResult("SlidingWindow", swPassed);
     }
     else
     {
         cout << "Choice is unsupported" << endl;
     }
+
+    stats.save(statsFilePath());
+    stats.writeDashboard("./dashboard/stats.js");
+
+    cout << endl;
+    cout << "Skill scores updated. Open dashboard/index.html to review your progress." << endl;
 
     return 0;
 }

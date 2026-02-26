@@ -1,18 +1,24 @@
 #include <iostream>
+#include <map>
+#include <string>
 #include "practice.h"
 #include "../Benchmarking/Benchmark.h"
 #include "../TestData/TestData.h"
+#include "../TestData/GenUsers.h"
+
+static const int WALDO_ID = 39212;
 
 /************************************************************
- * @brief Function groups practice function calls together
+ * @brief Runs all practice sorting functions and returns
+ *        a map of algorithm name -> passed
  ***********************************************************/
-void practiceSortingAlgorithms(int length)
+map<string, bool> practiceSortingAlgorithms(int length)
 {
+    map<string, bool> results;
     int min = 0;
     int max = 100;
     vector<int> randArray = generateRandomIntArray(length, min, max);
 
-    // PRACTICE
     cout << "    PRACTICE RESULTS    " << endl;
     cout << "========================" << endl;
 
@@ -22,6 +28,7 @@ void practiceSortingAlgorithms(int length)
     cout << pBubTime << " microseconds ";
     bool prBubTest = PracticeBubbleSortObj.isAscending();
     PracticeCheckStatus(prBubTest, pBubTime);
+    results["BubbleSort"] = prBubTest;
 
     cout << "Practice Selection Sort: ";
     SortingBenchmark PracticeSelectionSortObj(practiceSelectionSort, randArray);
@@ -29,6 +36,7 @@ void practiceSortingAlgorithms(int length)
     cout << pSelTime << " microseconds ";
     bool prSelTest = PracticeSelectionSortObj.isAscending();
     PracticeCheckStatus(prSelTest, pSelTime);
+    results["SelectionSort"] = prSelTest;
 
     cout << "Practice Insertion Sort: ";
     SortingBenchmark InsertionSortTestObj(practiceInsertionSort, randArray);
@@ -36,20 +44,23 @@ void practiceSortingAlgorithms(int length)
     cout << pInsertTime << " microseconds ";
     bool prInsertTest = InsertionSortTestObj.isAscending();
     PracticeCheckStatus(prInsertTest, pInsertTime);
+    results["InsertionSort"] = prInsertTest;
 
     cout << "Practice Merge Sort: ";
     SortingBenchmark MergeSortTestObj(practiceMergeSort, randArray);
     int pMergeTime = MergeSortTestObj.getTimeToCalcMs();
     cout << pMergeTime << " microseconds ";
-    auto prMergeStatus = MergeSortTestObj.isAscending();
+    bool prMergeStatus = MergeSortTestObj.isAscending();
     PracticeCheckStatus(prMergeStatus, pMergeTime);
+    results["MergeSort"] = prMergeStatus;
 
     cout << "Practice Quick Sort: ";
     SortingBenchmark PracticeQuickSortObj(practiceQuickSort, randArray);
     int pQuickTime = PracticeQuickSortObj.getTimeToCalcMs();
     cout << pQuickTime << " microseconds ";
-    auto pQuickSortStatus = PracticeQuickSortObj.isAscending();
+    bool pQuickSortStatus = PracticeQuickSortObj.isAscending();
     PracticeCheckStatus(pQuickSortStatus, pQuickTime);
+    results["QuickSort"] = pQuickSortStatus;
 
     cout << "Practice Heap Sort: ";
     SortingBenchmark HeapSortTestObj(practiceHeapSort, randArray);
@@ -57,31 +68,39 @@ void practiceSortingAlgorithms(int length)
     cout << pHeapTime << " microseconds ";
     bool pHeapSortStatus = HeapSortTestObj.isAscending();
     PracticeCheckStatus(pHeapSortStatus, pHeapTime);
+    results["HeapSort"] = pHeapSortStatus;
 
     cout << "Practice TimSort: ";
     SortingBenchmark TimSortTestObj(practiceTimSort, randArray);
     int pTimSortTime = TimSortTestObj.getTimeToCalcMs();
     cout << pTimSortTime << " microseconds ";
-    auto pTimSortStatus = TimSortTestObj.isAscending();
+    bool pTimSortStatus = TimSortTestObj.isAscending();
     PracticeCheckStatus(pTimSortStatus, pTimSortTime);
+    results["TimSort"] = pTimSortStatus;
 
-    return;
+    return results;
 }
 
-void practiceSearchingAlgorithms(int numUsers)
+/************************************************************
+ * @brief Runs all practice search functions on the same
+ *        user list and returns a map of algorithm -> passed
+ ***********************************************************/
+map<string, bool> practiceSearchingAlgorithms(int numUsers)
 {
+    map<string, bool> results;
     string userToSearch = "Waldo Emerson";
     vector<User> userList(numUsers);
-    User foundUser;
+    createUsers(userList); // always places Waldo Emerson (ID 39212) in the list
 
-    // Create User random list and name to search.
     cout << "Practice Linear Search: ";
-    SearchingBenchmark linearSearchPractice = SearchingBenchmark(findUser_LinearSearchPractice, userList, userToSearch);
+    SearchingBenchmark linearSearchPractice(findUser_LinearSearchPractice, userList, userToSearch);
     linearSearchPractice.getStats();
+    results["LinearSearch"] = (linearSearchPractice.getFoundUserId() == WALDO_ID);
 
     cout << "Practice HashMap Search: ";
-    SearchingBenchmark hashmapSearchPractice = SearchingBenchmark(findUser_HashMapPractice, userList, userToSearch);
+    SearchingBenchmark hashmapSearchPractice(findUser_HashMapPractice, userList, userToSearch);
     hashmapSearchPractice.getStats();
+    results["HashMapSearch"] = (hashmapSearchPractice.getFoundUserId() == WALDO_ID);
 
-    return;
+    return results;
 }

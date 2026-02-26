@@ -118,6 +118,11 @@ public:
         return timeToCalcMs;
     }
 
+    int getFoundUserId(void)
+    {
+        return foundUser.getUniqueID();
+    }
+
     void getStats(void)
     {
         if (foundUser.getUniqueID() != 39212)
