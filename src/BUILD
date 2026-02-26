@@ -9,6 +9,7 @@ cc_binary(
         "//src/SearchingAlgorithms:SearchingAlgorithms",
         "//src/GeneralAlgorithms:GeneralAlgorithms",
         "//src/utils:Utils",
+        "//src/Stats:Stats",
     ],
     copts = ["-g"]
 )
